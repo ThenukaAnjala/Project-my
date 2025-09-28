@@ -84,11 +84,11 @@ export const profileContent = {
     },
   ],
   contact: {
-    email: 'hello@anju.dev',
-    availability: 'Now booking new collaborations for Oct–Dec 2025.',
+    email: 'thenukaanjala@gmail.com',
+    availability: 'Now booking new collaborations for Octï¿½Dec 2025.',
     socials: [
       { label: 'Behance', href: 'https://behance.net/anju' },
-      { label: 'LinkedIn', href: 'https://linkedin.com/in/anju' },
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/thenuka-gunasekara-2b0957215/' },
       { label: 'Dribbble', href: 'https://dribbble.com/anju' },
     ],
   },
