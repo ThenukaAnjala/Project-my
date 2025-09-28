@@ -1,6 +1,6 @@
 import AnimatedSection from './AnimatedSection'
 import { profileContent } from '../data/portfolioContent'
-import './HeroSection.css'
+import '../styles/HeroSection.css'
 
 function HeroSection() {
   const { name, role, heroTagline, heroCta, stats } = profileContent
@@ -41,3 +41,4 @@ function HeroSection() {
 }
 
 export default HeroSection
+

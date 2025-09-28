@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import './AnimatedSection.css'
+import '../styles/AnimatedSection.css'
 
 function AnimatedSection({ id, background = 'light', className = '', children }) {
   const sectionRef = useRef(null)
@@ -43,3 +43,4 @@ function AnimatedSection({ id, background = 'light', className = '', children })
 }
 
 export default AnimatedSection
+

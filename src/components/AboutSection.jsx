@@ -1,6 +1,6 @@
 import AnimatedSection from './AnimatedSection'
 import { profileContent } from '../data/portfolioContent'
-import './AboutSection.css'
+import '../styles/AboutSection.css'
 
 function AboutSection() {
   const { about } = profileContent
@@ -28,3 +28,4 @@ function AboutSection() {
 }
 
 export default AboutSection
+

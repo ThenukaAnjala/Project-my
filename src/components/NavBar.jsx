@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { profileContent } from '../data/portfolioContent'
-import './NavBar.css'
+import '../styles/NavBar.css'
 
 const SECTIONS = [
   { id: 'home', label: 'Home' },
@@ -55,3 +55,4 @@ function NavBar() {
 }
 
 export default NavBar
+

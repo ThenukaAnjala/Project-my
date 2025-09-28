@@ -1,6 +1,6 @@
 import AnimatedSection from './AnimatedSection'
 import { profileContent } from '../data/portfolioContent'
-import './Testimonials.css'
+import '../styles/Testimonials.css'
 
 function Testimonials() {
   const { testimonials } = profileContent
@@ -29,3 +29,4 @@ function Testimonials() {
 }
 
 export default Testimonials
+

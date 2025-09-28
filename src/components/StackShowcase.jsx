@@ -1,6 +1,6 @@
 import AnimatedSection from './AnimatedSection'
 import { profileContent } from '../data/portfolioContent'
-import './StackShowcase.css'
+import '../styles/StackShowcase.css'
 
 function StackShowcase() {
   const { stack } = profileContent
@@ -34,3 +34,4 @@ function StackShowcase() {
 }
 
 export default StackShowcase
+

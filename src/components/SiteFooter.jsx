@@ -1,5 +1,5 @@
 import { profileContent } from '../data/portfolioContent'
-import './SiteFooter.css'
+import '../styles/SiteFooter.css'
 
 function SiteFooter() {
   return (
@@ -10,3 +10,4 @@ function SiteFooter() {
 }
 
 export default SiteFooter
+
