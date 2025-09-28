@@ -1,0 +1,10 @@
+.footer {
+  padding: 3rem 0 2rem;
+  text-align: center;
+  color: rgba(17, 17, 17, 0.55);
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: inherit;
+}

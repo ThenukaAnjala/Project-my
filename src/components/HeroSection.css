@@ -1,0 +1,119 @@
+.hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  align-items: center;
+  gap: 3rem;
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hero__title {
+  font-size: clamp(3rem, 8vw, 4.5rem);
+  line-height: 1.05;
+  margin: 0;
+}
+
+.hero__role {
+  display: block;
+  font-size: clamp(1.15rem, 3vw, 1.5rem);
+  font-weight: 400;
+  color: rgba(245, 245, 245, 0.82);
+  margin-top: 0.5rem;
+}
+
+.hero__tagline {
+  font-size: 1.1rem;
+  max-width: 32ch;
+  color: rgba(245, 245, 245, 0.7);
+  margin: 0;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.hero__button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 0.875rem 1.75rem;
+  border: 1px solid transparent;
+  transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease, color 200ms ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.hero__button--primary {
+  background: #ffffff;
+  color: #0a0a0a;
+  box-shadow: 0 14px 28px -18px rgba(0, 0, 0, 0.85);
+}
+
+.hero__button--primary:hover {
+  transform: translateY(-1px);
+  background: #f2f2f2;
+}
+
+.hero__button--secondary {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hero__button--secondary:hover {
+  border-color: rgba(255, 255, 255, 0.55);
+  color: #ffffff;
+}
+
+.hero__stats {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.hero__stats li {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.hero__stats li::before {
+  content: '';
+  position: absolute;
+  top: 0.35rem;
+  left: 0;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffffff, rgba(255, 255, 255, 0.55));
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.08);
+}
+
+.hero__stat-value {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.hero__stat-label {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.hero__stat-detail {
+  display: block;
+  font-size: 0.95rem;
+  opacity: 0.75;
+}

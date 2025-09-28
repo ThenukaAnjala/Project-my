@@ -1,0 +1,78 @@
+.section {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1), opacity 600ms ease;
+}
+
+.section__inner {
+  padding: clamp(3rem, 5vw, 4.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4vw, 3rem);
+}
+
+.section--hidden {
+  opacity: 0;
+  transform: translateY(48px);
+}
+
+.section--visible {
+  opacity: 1;
+  transform: none;
+}
+
+.section--light {
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.section--dark {
+  background: linear-gradient(135deg, #111111, #000000);
+  color: var(--color-text-inverse);
+}
+
+.section--muted {
+  background: var(--color-surface-muted);
+  color: var(--color-text);
+}
+
+.section__header {
+  max-width: 640px;
+}
+
+.section__header h2 {
+  margin: 0.25rem 0 0.75rem;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.15;
+}
+
+.section__description {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 1rem;
+}
+
+.section--dark .section__description {
+  color: rgba(245, 245, 245, 0.72);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-muted);
+}
+
+.section--dark .eyebrow {
+  color: rgba(245, 245, 245, 0.7);
+}
+
+@media (max-width: 640px) {
+  .section__inner {
+    padding: 2.75rem 1.75rem;
+  }
+}
