@@ -1,6 +1,6 @@
 export const profileContent = {
-  name: 'Anju Perera',
-  role: 'Full-Stack Developer & UI Enthusiast',
+  name: 'THENUKA GUNASEKARA ',
+  role: 'Full-Stack Developer & AI/ML Engineer',
   location: 'Colombo, Sri Lanka',
   heroTagline: 'Crafting modern digital experiences with clean code and purposeful design.',
   heroCta: [
@@ -87,7 +87,7 @@ export const profileContent = {
     email: 'thenukaanjala@gmail.com',
     availability: 'Now booking new collaborations for Oct�Dec 2025.',
     socials: [
-      { label: 'Behance', href: 'https://behance.net/anju' },
+      { label: 'Github', href: 'https://github.com/ThenukaAnjala' },
       { label: 'LinkedIn', href: 'https://www.linkedin.com/in/thenuka-gunasekara-2b0957215/' },
       { label: 'Dribbble', href: 'https://dribbble.com/anju' },
     ],

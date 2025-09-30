@@ -1,5 +1,6 @@
 import AnimatedSection from './AnimatedSection'
 import { profileContent } from '../data/portfolioContent'
+import profilePhoto from '../assets/images/profile/My Photo.jpg'
 import '../styles/HeroSection.css'
 
 function HeroSection() {
@@ -37,6 +38,7 @@ function HeroSection() {
 
         <aside className="hero__visual" aria-hidden="true">
           <div className="hero__image-frame">
+            <img className="hero__image" src={profilePhoto} alt="" loading="lazy" />
             <div className="hero__image-block" />
           </div>
           {availabilityNote ? (
