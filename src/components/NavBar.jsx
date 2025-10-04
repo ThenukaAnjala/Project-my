@@ -92,7 +92,7 @@ function NavBar() {
       <header className={`navbar ${isCollapsed ? 'navbar--collapsed' : ''}`}>
         <a className="navbar__brand" href="#home" onClick={(event) => handleNavClick(event, 'home')}>
           <span className="navbar__logo" aria-hidden="true">
-            AP
+            TG
           </span>
           <span className="navbar__brand-text">{profileContent.name}</span>
         </a>

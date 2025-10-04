@@ -89,7 +89,7 @@ export const profileContent = {
     socials: [
       { label: 'Github', href: 'https://github.com/ThenukaAnjala' },
       { label: 'LinkedIn', href: 'https://www.linkedin.com/in/thenuka-gunasekara-2b0957215/' },
-      { label: 'Dribbble', href: 'https://dribbble.com/anju' },
+      // { label: 'Dribbble', href: 'https://dribbble.com/anju' },
     ],
   },
 }
