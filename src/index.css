@@ -20,6 +20,7 @@
   --color-accent-contrast: #f8f7f1;
   --color-accent-soft: rgba(26, 25, 23, 0.08);
   --shadow-lg: 0 28px 60px -44px rgba(17, 17, 17, 0.6);
+  --hero-recede-progress: 0;
 }
 
 * {

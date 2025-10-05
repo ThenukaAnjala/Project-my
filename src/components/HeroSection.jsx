@@ -1,8 +1,10 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, useMemo } from 'react'
 import AnimatedSection from './AnimatedSection'
 import { profileContent } from '../data/portfolioContent'
 import profilePhoto from '../assets/images/profile/My Photo.jpg'
 import '../styles/HeroSection.css'
+
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
 const BIRTH_DATE_ISO = '1999-09-02'
 const BIRTH_DATE = new Date(BIRTH_DATE_ISO)
@@ -25,17 +27,70 @@ const calculateAge = (referenceDate) => {
 function HeroSection() {
   const { name, role, heroTagline, heroCta, stats, contact } = profileContent
   const trimmedName = (name || '').trim()
-  const [firstPart, ...rest] = trimmedName.split(' ')
+  const displayName = trimmedName || 'THENUKA GUNASEKARA'
+  const [firstPart, ...rest] = displayName.split(' ')
   const lastPart = rest.join(' ')
   const availabilityNote = contact?.availability || ''
-  const displayName = trimmedName || 'THENUKA GUNASEKARA'
 
   const [age, setAge] = useState(() => calculateAge(new Date()))
+  const [depthProgress, setDepthProgress] = useState(0)
+  const [isHeroCompressed, setIsHeroCompressed] = useState(false)
+  const depthProgressRef = useRef(0)
+  const compressedStateRef = useRef(false)
+  const heroDepthRef = useRef(null)
 
+  const firstTitleLineRef = useRef(null)
+  const secondTitleLineRef = useRef(null)
   const frameRef = useRef(null)
   const imageRef = useRef(null)
   const overlayRef = useRef(null)
   const infoRef = useRef(null)
+
+  useIsomorphicLayoutEffect(() => {
+    const lines = [firstTitleLineRef.current, secondTitleLineRef.current].filter(Boolean)
+    if (!lines.length) {
+      return undefined
+    }
+
+    const motionQuery = typeof window !== 'undefined' && window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null
+    if (motionQuery?.matches) {
+      lines.forEach((line) => {
+        line.style.removeProperty('opacity')
+        line.style.removeProperty('transform')
+      })
+      return undefined
+    }
+
+    const easing = 'cubic-bezier(0.25, 1, 0.5, 1)'
+
+    lines.forEach((line) => {
+      line.style.opacity = '0'
+      line.style.transform = 'translateY(32px)'
+    })
+
+    const animations = lines.map((line, index) =>
+      line.animate(
+        [
+          { transform: 'translateY(32px)', opacity: 0 },
+          { transform: 'translateY(0)', opacity: 1 },
+        ],
+        {
+          duration: 640,
+          delay: index * 140,
+          easing,
+          fill: 'forwards',
+        }
+      )
+    )
+
+    return () => {
+      animations.forEach((animation) => animation.cancel())
+      lines.forEach((line) => {
+        line.style.removeProperty('opacity')
+        line.style.removeProperty('transform')
+      })
+    }
+  }, [displayName])
 
   useEffect(() => {
     const updateAge = () => setAge(calculateAge(new Date()))
@@ -51,7 +106,128 @@ function HeroSection() {
   }, [])
 
   useEffect(() => {
-    const frameEl = frameRef.current
+    if (typeof window === 'undefined') {
+      return undefined
+    }
+
+    const heroSection = document.getElementById('home')
+    if (!heroSection) {
+      document.documentElement.style.removeProperty('--hero-recede-progress')
+      return undefined
+    }
+
+    const rootEl = document.documentElement
+    const setGlobalProgress = (value) => {
+      const clamped = Math.min(Math.max(value, 0), 1)
+      rootEl.style.setProperty('--hero-recede-progress', clamped.toFixed(3))
+    }
+
+    const clearGlobalProgress = () => {
+      rootEl.style.removeProperty('--hero-recede-progress')
+    }
+
+    const motionQuery = window.matchMedia?.('(prefers-reduced-motion: reduce)')
+    let respectReducedMotion = motionQuery?.matches ?? false
+    let frameId = 0
+    let listenersAttached = false
+    const legacyMotionQuery =
+      motionQuery && !motionQuery.addEventListener && motionQuery.addListener ? motionQuery : null
+
+    const syncDepth = () => {
+      frameId = 0
+      const rect = heroSection.getBoundingClientRect()
+      const height = rect.height || 1
+      const progress = Math.min(Math.max(-rect.top / height, 0), 1)
+
+      if (Math.abs(progress - depthProgressRef.current) > 0.015) {
+        depthProgressRef.current = progress
+        setDepthProgress(progress)
+      }
+
+      setGlobalProgress(progress)
+
+      const shouldCompress = progress > 0.12
+      if (shouldCompress !== compressedStateRef.current) {
+        compressedStateRef.current = shouldCompress
+        setIsHeroCompressed(shouldCompress)
+      }
+    }
+
+    const handleScroll = () => {
+      if (respectReducedMotion || frameId) {
+        return
+      }
+      frameId = window.requestAnimationFrame(syncDepth)
+    }
+
+    const attachListeners = () => {
+      if (listenersAttached || respectReducedMotion) {
+        return
+      }
+      window.addEventListener('scroll', handleScroll, { passive: true })
+      window.addEventListener('resize', handleScroll)
+      listenersAttached = true
+    }
+
+    const detachListeners = () => {
+      if (!listenersAttached) {
+        return
+      }
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
+      listenersAttached = false
+    }
+
+    const resetDepth = () => {
+      if (frameId) {
+        window.cancelAnimationFrame(frameId)
+        frameId = 0
+      }
+      depthProgressRef.current = 0
+      compressedStateRef.current = false
+      setDepthProgress(0)
+      setIsHeroCompressed(false)
+      setGlobalProgress(0)
+    }
+
+    const handleMotionChange = (event) => {
+      const prefersReduce =
+        typeof event.matches === 'boolean' ? event.matches : motionQuery?.matches ?? false
+
+      respectReducedMotion = prefersReduce
+
+      if (prefersReduce) {
+        detachListeners()
+        resetDepth()
+      } else {
+        syncDepth()
+        attachListeners()
+      }
+    }
+
+    if (!respectReducedMotion) {
+      syncDepth()
+      attachListeners()
+    } else {
+      resetDepth()
+    }
+
+    motionQuery?.addEventListener?.('change', handleMotionChange)
+    legacyMotionQuery?.addListener?.(handleMotionChange)
+
+    return () => {
+      detachListeners()
+      if (frameId) {
+        window.cancelAnimationFrame(frameId)
+      }
+      motionQuery?.removeEventListener?.('change', handleMotionChange)
+      legacyMotionQuery?.removeListener?.(handleMotionChange)
+      clearGlobalProgress()
+    }
+  }, [])
+
+useEffect(() => {
+  const frameEl = frameRef.current
     const imageEl = imageRef.current
     const overlayEl = overlayRef.current
     const infoEl = infoRef.current
@@ -154,64 +330,113 @@ function HeroSection() {
     }
   }, [])
 
+  const heroDepthStyle = useMemo(() => {
+    const progress = Math.min(Math.max(depthProgress, 0), 1)
+    const depthShift = progress * 320
+    const translateZ = -depthShift
+    const translateY = progress * 24
+    const scale = Math.max(1 - progress * 0.06, 0.82)
+    const opacity = Math.max(1 - progress * 0.2, 0.6)
+
+    return {
+      '--hero-depth-progress': progress,
+      transform: `translate3d(0, ${translateY.toFixed(2)}px, ${translateZ.toFixed(2)}px) scale(${scale.toFixed(3)})`,
+      opacity,
+    }
+  }, [depthProgress])
+
   return (
     <AnimatedSection id="home" background="light" className="hero">
-      <div className="hero__layout">
-        <header className="hero__header">
-          <p className="hero__eyebrow">{role}</p>
-          <h1 className="hero__title">
-            <span className="hero__title-line">{firstPart}</span>
-            {lastPart ? <span className="hero__title-line hero__title-line--offset">{lastPart}</span> : null}
-          </h1>
-        </header>
+      <div
+        ref={heroDepthRef}
+        className={`hero__depth ${isHeroCompressed ? 'hero__depth--compressed' : ''}`}
+        style={heroDepthStyle}
+      >
+        <div className="hero__layout">
+          <header className="hero__header">
+            <p className="hero__eyebrow">{role}</p>
+            <h1 className="hero__title">
+              <span
+                ref={firstTitleLineRef}
+                className="hero__title-line hero__title-line--animated"
+                data-title={firstPart}
+              >
+                {firstPart}
+              </span>
+              {lastPart ? (
+                <span
+                  ref={secondTitleLineRef}
+                  className="hero__title-line hero__title-line--offset hero__title-line--animated"
+                  data-title={lastPart}
+                >
+                  {lastPart}
+                </span>
+              ) : null}
+            </h1>
+          </header>
 
-        <div className="hero__content">
-          <p className="hero__lede">{heroTagline}</p>
-          <div className="hero__actions">
-            {heroCta.map((cta) => {
-              const variantClass =
-                cta.variant === 'secondary' ? 'hero__button--ghost' : 'hero__button--solid'
+          <div className="hero__content">
+            <p className="hero__lede">{heroTagline}</p>
+            <div className="hero__actions">
+              {heroCta.map((cta) => {
+                const isSecondary = cta.variant === 'secondary'
+                const variantClass = isSecondary ? 'hero__button--ghost' : 'hero__button--solid'
 
-              return (
-                <a key={cta.href} className={`hero__button ${variantClass}`} href={cta.href}>
-                  {cta.label}
-                </a>
-              )
-            })}
+                return (
+                  <a key={cta.href} className={`hero__button ${variantClass}`} href={cta.href}>
+                    {!isSecondary ? (
+                      <>
+                        <span aria-hidden="true" className="hero__button-frame hero__button-frame--top" />
+                        <span aria-hidden="true" className="hero__button-frame hero__button-frame--right" />
+                        <span aria-hidden="true" className="hero__button-frame hero__button-frame--bottom" />
+                        <span aria-hidden="true" className="hero__button-frame hero__button-frame--left" />
+                      </>
+                    ) : null}
+                    <span className="hero__button-label">{cta.label}</span>
+                  </a>
+                )
+              })}
+            </div>
           </div>
+
+          <aside className="hero__visual">
+            <div ref={frameRef} className="hero__image-frame">
+              <img
+                ref={imageRef}
+                className="hero__image"
+                src={profilePhoto}
+                alt={`Portrait of ${displayName}`}
+                loading="lazy"
+              />
+              <div ref={overlayRef} className="hero__image-overlay" />
+              <div ref={infoRef} className="hero__image-info">
+                <span className="hero__image-info-name">{displayName}</span>
+                <span className="hero__image-info-age">
+                  <span className="hero__image-info-age-value">{age}</span>
+                  <span className="hero__image-info-age-label">years</span>
+                </span>
+                <span className="hero__image-info-birthday">Born {BIRTH_DATE_ISO.split('-').join('/')}</span>
+              </div>
+            </div>
+            {availabilityNote ? (
+              <div className="hero__availability">
+                <span className="hero__availability-label">Available for collaborations</span>
+                <span className="hero__availability-note">{availabilityNote}</span>
+              </div>
+            ) : null}
+          </aside>
         </div>
 
-        <aside className="hero__visual">
-          <div ref={frameRef} className="hero__image-frame">
-            <img ref={imageRef} className="hero__image" src={profilePhoto} alt="Portrait of Thenuka Gunasekara" loading="lazy" />
-            <div ref={overlayRef} className="hero__image-overlay" />
-            <div ref={infoRef} className="hero__image-info">
-              <span className="hero__image-info-name">{displayName}</span>
-              <span className="hero__image-info-age">
-                <span className="hero__image-info-age-value">{age}</span>
-                <span className="hero__image-info-age-label">years</span>
-              </span>
-              <span className="hero__image-info-birthday">Born {BIRTH_DATE_ISO.split('-').join('/')}</span>
-            </div>
-          </div>
-          {availabilityNote ? (
-            <div className="hero__availability">
-              <span className="hero__availability-label">Available for collaborations</span>
-              <span className="hero__availability-note">{availabilityNote}</span>
-            </div>
-          ) : null}
-        </aside>
+        <ul className="hero__stats">
+          {stats.map((stat) => (
+            <li key={stat.label}>
+              <span className="hero__stat-value">{stat.value}</span>
+              <span className="hero__stat-label">{stat.label}</span>
+              <span className="hero__stat-detail">{stat.detail}</span>
+            </li>
+          ))}
+        </ul>
       </div>
-
-      <ul className="hero__stats">
-        {stats.map((stat) => (
-          <li key={stat.label}>
-            <span className="hero__stat-value">{stat.value}</span>
-            <span className="hero__stat-label">{stat.label}</span>
-            <span className="hero__stat-detail">{stat.detail}</span>
-          </li>
-        ))}
-      </ul>
     </AnimatedSection>
   )
 }

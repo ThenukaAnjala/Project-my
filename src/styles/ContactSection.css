@@ -131,16 +131,18 @@
   font-weight: 600;
   letter-spacing: 0.02em;
   text-decoration: none;
-  background: linear-gradient(135deg, #111111, #2a2a2a);
-  color: var(--color-text-inverse);
-  box-shadow: 0 25px 45px -20px rgba(17, 17, 17, 0.65);
-  transition: transform 220ms ease, box-shadow 220ms ease;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: linear-gradient(135deg, #000 0%, #111 50%, #000 100%);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 25px 48px -22px rgba(0, 0, 0, 0.7);
+  background-size: 220% 100%;
+  background-position: 0% 50%;
+  transition: transform 240ms ease, box-shadow 300ms ease, background-position 360ms ease, border-color 220ms ease;
 }
 
-.contact-section__cta:hover {
-  transform: translateY(-3px) scale(1.01);
-  box-shadow: 0 30px 60px -24px rgba(17, 17, 17, 0.65);
-}
 
 .contact-section__cta-icon {
   width: 1.1rem;
@@ -197,16 +199,43 @@
   border-radius: 999px;
   font-size: 0.9rem;
   text-decoration: none;
-  background: rgba(17, 17, 17, 0.08);
-  border: 1px solid rgba(17, 17, 17, 0.12);
-  transition: transform 200ms ease, background 200ms ease, border-color 200ms ease;
+  background: #fff;
+  color: #000;
+  border: 1px solid rgba(0, 0, 0, 0.22);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition: transform 220ms ease, color 220ms ease, border-color 220ms ease;
 }
+
 
 .contact-section__social-chip:hover {
   transform: translateY(-2px);
-  background: rgba(17, 17, 17, 0.12);
-  border-color: rgba(17, 17, 17, 0.18);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.28);
 }
+.contact-section__social-chip::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #000 0%, #111 100%);
+  transform: translateX(-100%);
+  transition: transform 300ms ease;
+  z-index: -1;
+}
+
+.contact-section__social-chip:hover::before,
+.contact-section__social-chip:focus-visible::before {
+  transform: translateX(0);
+}
+
+.contact-section__social-chip:focus-visible {
+  outline: none;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #000;
+}
+
 
 .contact-section__panel {
   position: relative;
@@ -310,18 +339,51 @@
   padding: 0.9rem 1.6rem;
   border-radius: 999px;
   font-weight: 600;
-  border: none;
   cursor: pointer;
-  background: linear-gradient(135deg, #111111, #242424);
-  color: var(--color-text-inverse);
-  box-shadow: 0 18px 40px -20px rgba(17, 17, 17, 0.65);
-  transition: transform 200ms ease, box-shadow 200ms ease;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: linear-gradient(135deg, #000 0%, #111 50%, #000 100%);
+  color: #fff;
+  box-shadow: 0 22px 46px -24px rgba(0, 0, 0, 0.65);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-size: 220% 100%;
+  background-position: 0% 50%;
+  transition: transform 240ms ease, box-shadow 280ms ease, background-position 360ms ease, border-color 220ms ease;
+}
+.contact-section__cta::before,
+.contact-section__submit::before {
+  content: '';
+  position: absolute;
+  inset: -12% 0;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0));
+  transform: translateX(-120%);
+  transition: transform 420ms ease;
+  z-index: -1;
 }
 
-.contact-section__submit:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 24px 54px -22px rgba(17, 17, 17, 0.6);
+.contact-section__cta:hover::before,
+.contact-section__submit:hover::before,
+.contact-section__cta:focus-visible::before,
+.contact-section__submit:focus-visible::before {
+  transform: translateX(120%);
 }
+
+.contact-section__cta:focus-visible,
+.contact-section__submit:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #000, 0 32px 64px -28px rgba(0, 0, 0, 0.72);
+}
+
+.contact-section__cta:hover,
+.contact-section__submit:hover {
+  transform: translateY(-3px);
+  background-position: 100% 50%;
+  border-color: rgba(255, 255, 255, 0.24);
+  box-shadow: 0 30px 60px -24px rgba(0, 0, 0, 0.72);
+}
+
+
 
 .contact-section__badge {
   position: absolute;
@@ -399,6 +461,27 @@
   }
   50% {
     transform: translateY(-6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-section__cta,
+  .contact-section__submit,
+  .contact-section__social-chip {
+    transition: none;
+  }
+
+  .contact-section__cta:hover,
+  .contact-section__submit:hover,
+  .contact-section__social-chip:hover {
+    transform: none;
+    background-position: 0% 50%;
+  }
+
+  .contact-section__cta::before,
+  .contact-section__submit::before,
+  .contact-section__social-chip::before {
+    display: none;
   }
 }
 

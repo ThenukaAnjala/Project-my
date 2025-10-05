@@ -21,6 +21,10 @@ function NavBar() {
   const menuId = 'primary-navigation'
   const contactDetails = profileContent?.contact || {}
   const socials = contactDetails.socials || []
+  const fallbackName = 'THENUKA GUNASEKARA'
+  const brandName = (profileContent.name || fallbackName).trim() || fallbackName
+  const [brandFirst, ...brandRest] = brandName.split(/\s+/)
+  const brandLast = brandRest.join(' ')
 
   useEffect(() => {
     const resolveCollapseThreshold = () => {
@@ -94,7 +98,16 @@ function NavBar() {
           <span className="navbar__logo" aria-hidden="true">
             TG
           </span>
-          <span className="navbar__brand-text">{profileContent.name}</span>
+          <span className="navbar__brand-text" role="text" aria-label={brandName}>
+            <span className="navbar__brand-first" data-text={brandFirst}>
+              {brandFirst}
+            </span>
+            {brandLast ? (
+              <span className="navbar__brand-last" data-text={brandLast}>
+                {brandLast}
+              </span>
+            ) : null}
+          </span>
         </a>
 
         <button
