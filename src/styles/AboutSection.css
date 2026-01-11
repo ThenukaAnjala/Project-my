@@ -54,3 +54,19 @@
   margin-right: 0.5rem;
   color: var(--color-accent);
 }
+
+@media (max-width: 540px) {
+  .about__story {
+    font-size: 1rem;
+  }
+
+  .about__highlights {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .about__highlights {
+    padding: 1rem;
+  }
+}

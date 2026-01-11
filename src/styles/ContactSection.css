@@ -531,3 +531,32 @@
     padding: 2.75rem 1.75rem;
   }
 }
+
+@media (max-width: 480px) {
+  .contact-section__actions {
+    align-items: stretch;
+  }
+
+  .contact-section__cta,
+  .contact-section__availability {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .contact-section__socials {
+    justify-content: center;
+  }
+
+  .contact-section__form {
+    gap: 1rem;
+  }
+
+  .contact-section__panel-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .contact-section__field input,
+  .contact-section__field textarea {
+    padding: 0.75rem 0.95rem;
+  }
+}

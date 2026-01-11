@@ -54,3 +54,17 @@
   font-size: 0.95rem;
   font-weight: 500;
 }
+
+@media (max-width: 540px) {
+  .stack__card {
+    padding: 1.4rem;
+  }
+
+  .stack__badge {
+    font-size: 0.82rem;
+  }
+
+  .stack__list li {
+    font-size: 0.85rem;
+  }
+}

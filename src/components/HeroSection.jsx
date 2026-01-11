@@ -337,6 +337,7 @@ useEffect(() => {
     const translateY = progress * 24
     const scale = Math.max(1 - progress * 0.06, 0.82)
     const opacity = Math.max(1 - progress * 0.2, 0.6)
+    // Interactive planes stay flattened via CSS so CTA hit targets remain accurate while we recede in 3D.
 
     return {
       '--hero-depth-progress': progress,
@@ -379,19 +380,10 @@ useEffect(() => {
             <p className="hero__lede">{heroTagline}</p>
             <div className="hero__actions">
               {heroCta.map((cta) => {
-                const isSecondary = cta.variant === 'secondary'
-                const variantClass = isSecondary ? 'hero__button--ghost' : 'hero__button--solid'
+                const variantClass = cta.variant === 'secondary' ? 'hero__button--ghost' : 'hero__button--solid'
 
                 return (
                   <a key={cta.href} className={`hero__button ${variantClass}`} href={cta.href}>
-                    {!isSecondary ? (
-                      <>
-                        <span aria-hidden="true" className="hero__button-frame hero__button-frame--top" />
-                        <span aria-hidden="true" className="hero__button-frame hero__button-frame--right" />
-                        <span aria-hidden="true" className="hero__button-frame hero__button-frame--bottom" />
-                        <span aria-hidden="true" className="hero__button-frame hero__button-frame--left" />
-                      </>
-                    ) : null}
                     <span className="hero__button-label">{cta.label}</span>
                   </a>
                 )
@@ -442,3 +434,4 @@ useEffect(() => {
 }
 
 export default HeroSection
+

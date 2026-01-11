@@ -8,7 +8,7 @@ export const profileContent = {
     { label: 'Let\'s Collaborate', href: '#contact', variant: 'secondary' },
   ],
   stats: [
-    { label: 'Projects delivered', value: '24+', detail: 'Web apps, mobile-friendly sites & dashboards' },
+    { label: 'Projects delivered', value: '30+', detail: 'Web apps, mobile-friendly sites & dashboards, AI/ML solutions' },
     { label: 'Happy clients', value: '14', detail: 'Start-ups, agencies & small businesses' },
     { label: 'Focus areas', value: 'UI, UX, Dev', detail: 'React, Node.js, Express, MongoDB' },
   ],
@@ -88,8 +88,7 @@ export const profileContent = {
     availability: 'Now booking new collaborations for Oct�Dec 2025.',
     socials: [
       { label: 'Github', href: 'https://github.com/ThenukaAnjala' },
-      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/thenuka-gunasekara-2b0957215/' },
-      // { label: 'Dribbble', href: 'https://dribbble.com/anju' },
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/thenuka-gunasekara-2b0957215/' }
     ],
   },
 }

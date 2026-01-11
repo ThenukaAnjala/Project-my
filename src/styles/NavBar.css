@@ -283,6 +283,10 @@
   flex-direction: column;
   align-items: flex-end;
   gap: clamp(2.25rem, 6vw, 3.5rem);
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 .navbar__overlay-close {
@@ -461,6 +465,53 @@
 
   .navbar__overlay-socials {
     justify-content: center;
+  }
+}
+
+@media (max-width: 540px) {
+  .navbar {
+    top: 0.75rem;
+    width: min(100% - 1rem, 100%);
+    padding: 0.55rem 0.75rem;
+  }
+
+  .navbar--collapsed {
+    margin-right: 1rem;
+  }
+
+  .navbar__logo {
+    width: 32px;
+    height: 32px;
+    font-size: 0.7rem;
+  }
+
+  .navbar__toggle {
+    padding: 0.35rem;
+  }
+
+  .navbar__toggle-line {
+    width: 18px;
+  }
+
+  .navbar__overlay-content {
+    width: min(420px, 92vw);
+    padding: 2.5rem 1.75rem;
+    gap: 2rem;
+    max-height: calc(100vh - 2.5rem);
+  }
+
+  .navbar__overlay-close {
+    width: 40px;
+    height: 40px;
+  }
+
+  .navbar__overlay-link {
+    font-size: clamp(1.9rem, 10vw, 3.2rem);
+    letter-spacing: 0.12em;
+  }
+
+  .navbar__overlay-email-address {
+    font-size: 0.9rem;
   }
 }
 

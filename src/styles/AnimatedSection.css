@@ -76,3 +76,13 @@
     padding: 2.75rem 1.75rem;
   }
 }
+
+@media (max-width: 480px) {
+  .section {
+    border-radius: 18px;
+  }
+
+  .section__inner {
+    padding: 2.25rem 1.25rem;
+  }
+}

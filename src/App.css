@@ -17,4 +17,18 @@
   .page {
     padding: 0 1.25rem 4rem;
   }
+
+  .page__content {
+    gap: 4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 0 1rem 3.5rem;
+  }
+
+  .page__content {
+    gap: 3rem;
+  }
 }
