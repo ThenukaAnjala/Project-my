@@ -26,6 +26,7 @@ const calculateAge = (referenceDate) => {
 
 function HeroSection() {
   const { name, role, heroTagline, heroCta, stats, contact } = profileContent
+  const githubUsername = profileContent.githubUsername || 'ThenukaAnjala'
   const trimmedName = (name || '').trim()
   const displayName = trimmedName || 'THENUKA GUNASEKARA'
   const [firstPart, ...rest] = displayName.split(' ')
@@ -33,6 +34,7 @@ function HeroSection() {
   const availabilityNote = contact?.availability || ''
 
   const [age, setAge] = useState(() => calculateAge(new Date()))
+  const [repoCount, setRepoCount] = useState(null)
   const [depthProgress, setDepthProgress] = useState(0)
   const [isHeroCompressed, setIsHeroCompressed] = useState(false)
   const depthProgressRef = useRef(0)
@@ -104,6 +106,49 @@ function HeroSection() {
       window.clearInterval(intervalId)
     }
   }, [])
+
+  useEffect(() => {
+    if (!githubUsername) {
+      return undefined
+    }
+
+    const controller = new AbortController()
+    let isMounted = true
+    const privateReposOverride = Number(import.meta.env.VITE_GITHUB_PRIVATE_REPOS)
+    const hasPrivateOverride = Number.isFinite(privateReposOverride)
+    const headers = { Accept: 'application/vnd.github+json' }
+    const url = `https://api.github.com/users/${githubUsername}`
+
+    fetch(url, { headers, signal: controller.signal })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`GitHub request failed with status ${response.status}`)
+        }
+        return response.json()
+      })
+      .then((data) => {
+        if (!isMounted) return
+        const publicRepos = Number(data.public_repos)
+
+        if (!Number.isFinite(publicRepos)) {
+          return
+        }
+
+        const privateRepos = hasPrivateOverride ? privateReposOverride : 0
+        const total = publicRepos + (Number.isFinite(privateRepos) ? privateRepos : 0)
+
+        setRepoCount(total)
+      })
+      .catch(() => {
+        if (!isMounted) return
+        setRepoCount(null)
+      })
+
+    return () => {
+      isMounted = false
+      controller.abort()
+    }
+  }, [githubUsername])
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -330,6 +375,20 @@ useEffect(() => {
     }
   }, [])
 
+  const statsWithRepoCount = useMemo(() => {
+    if (!Array.isArray(stats)) {
+      return []
+    }
+
+    return stats.map((stat) => {
+      if (stat.id !== 'projects' || repoCount === null) {
+        return stat
+      }
+
+      return { ...stat, value: `${repoCount}` }
+    })
+  }, [stats, repoCount])
+
   const heroDepthStyle = useMemo(() => {
     const progress = Math.min(Math.max(depthProgress, 0), 1)
     const depthShift = progress * 320
@@ -420,8 +479,8 @@ useEffect(() => {
         </div>
 
         <ul className="hero__stats">
-          {stats.map((stat) => (
-            <li key={stat.label}>
+          {statsWithRepoCount.map((stat) => (
+            <li key={stat.id || stat.label}>
               <span className="hero__stat-value">{stat.value}</span>
               <span className="hero__stat-label">{stat.label}</span>
               <span className="hero__stat-detail">{stat.detail}</span>
