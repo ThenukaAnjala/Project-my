@@ -9,7 +9,7 @@ export const profileContent = {
     { label: 'Let\'s Collaborate', href: '#contact', variant: 'secondary' },
   ],
   stats: [
-    { id: 'projects', label: 'GitHub repos', value: '30+', detail: 'Public + private repositories' },
+    { id: 'projects', label: 'GitHub repos', value: '30+', detail: 'Public + private + collaborator repos' },
     { id: 'clients', label: 'Happy clients', value: '14', detail: 'Start-ups, agencies & small businesses' },
     { id: 'focus', label: 'Focus areas', value: 'UI, UX, Dev', detail: 'React, Node.js, Express, MongoDB' },
   ],

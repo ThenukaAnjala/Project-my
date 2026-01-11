@@ -117,32 +117,54 @@ function HeroSection() {
     const privateReposOverride = Number(import.meta.env.VITE_GITHUB_PRIVATE_REPOS)
     const hasPrivateOverride = Number.isFinite(privateReposOverride)
     const headers = { Accept: 'application/vnd.github+json' }
-    const url = `https://api.github.com/users/${githubUsername}`
+    const fallbackUrl = `https://api.github.com/users/${githubUsername}`
 
-    fetch(url, { headers, signal: controller.signal })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`GitHub request failed with status ${response.status}`)
+    const fetchRepoCount = async () => {
+      let total = null
+
+      try {
+        const response = await fetch('/api/github-repo-count', { signal: controller.signal })
+        if (response.ok) {
+          const data = await response.json()
+          const apiTotal = Number(data?.totalCount)
+          if (Number.isFinite(apiTotal)) {
+            total = apiTotal
+          }
         }
-        return response.json()
-      })
-      .then((data) => {
-        if (!isMounted) return
-        const publicRepos = Number(data.public_repos)
-
-        if (!Number.isFinite(publicRepos)) {
+      } catch (error) {
+        if (controller.signal.aborted) {
           return
         }
+      }
 
-        const privateRepos = hasPrivateOverride ? privateReposOverride : 0
-        const total = publicRepos + (Number.isFinite(privateRepos) ? privateRepos : 0)
+      if (total === null) {
+        try {
+          const response = await fetch(fallbackUrl, { headers, signal: controller.signal })
+          if (!response.ok) {
+            throw new Error(`GitHub request failed with status ${response.status}`)
+          }
+          const data = await response.json()
+          const publicRepos = Number(data.public_repos)
 
-        setRepoCount(total)
-      })
-      .catch(() => {
-        if (!isMounted) return
-        setRepoCount(null)
-      })
+          if (Number.isFinite(publicRepos)) {
+            const privateRepos = hasPrivateOverride ? privateReposOverride : 0
+            total = publicRepos + (Number.isFinite(privateRepos) ? privateRepos : 0)
+          }
+        } catch (error) {
+          if (controller.signal.aborted) {
+            return
+          }
+        }
+      }
+
+      if (!isMounted || controller.signal.aborted) {
+        return
+      }
+
+      setRepoCount(total)
+    }
+
+    fetchRepoCount()
 
     return () => {
       isMounted = false
