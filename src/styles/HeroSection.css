@@ -158,6 +158,11 @@
     opacity: 0;
   }
 
+  .hero__actions {
+    transform: none;
+    transition: none;
+  }
+
   .hero__button {
     transition: none;
     transform: none;
@@ -199,6 +204,16 @@
   flex-wrap: wrap;
   gap: 0.75rem;
   transform-style: flat;
+  position: relative;
+  z-index: 1;
+  transform: translate3d(
+      0,
+      calc(var(--hero-depth-progress, 0) * -24px),
+      calc(var(--hero-depth-progress, 0) * 320px)
+    )
+    scale(calc(1 + var(--hero-depth-progress, 0) * 0.06));
+  transition: transform 520ms cubic-bezier(0.22, 0.82, 0.26, 1);
+  will-change: transform;
 }
 
 .hero__button {
@@ -221,6 +236,8 @@
   background: #000;
   color: #fff;
   transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  will-change: transform, box-shadow;
   box-shadow: 0 22px 46px -24px rgba(0, 0, 0, 0.75);
   transition: transform 220ms ease, box-shadow 280ms ease, color 220ms ease, background-color 220ms ease, border-color 220ms ease;
 }
@@ -323,6 +340,23 @@
 
   .hero__image-overlay {
     opacity: 0.55;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .hero__button:active {
+    transform: translate3d(0, 1px, 0) scale(0.98);
+    box-shadow: 0 16px 34px -22px rgba(0, 0, 0, 0.6);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) and (hover: none) and (pointer: coarse) {
+  .hero__button::before {
+    animation: hero-button-sheen 4.2s ease-in-out infinite;
+  }
+
+  .hero__button:nth-child(2)::before {
+    animation-delay: 0.6s;
   }
 }
 
@@ -487,6 +521,24 @@
 
   .hero__stat-value {
     font-size: 1.6rem;
+  }
+}
+
+@keyframes hero-button-sheen {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.35;
+  }
+  60% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(120%);
+    opacity: 0;
   }
 }
 

@@ -1,7 +1,7 @@
 export const profileContent = {
   name: 'THENUKA GUNASEKARA ',
   githubUsername: 'ThenukaAnjala',
-  role: 'Full-Stack Developer & AI/ML Engineer',
+  role: 'Full-Stack Developer & AI/ML Engineer (Full Time Mobile Application Developer)',
   location: 'Colombo, Sri Lanka',
   heroTagline: 'Crafting modern digital experiences with clean code and purposeful design.',
   heroCta: [
@@ -9,7 +9,7 @@ export const profileContent = {
     { label: 'Let\'s Collaborate', href: '#contact', variant: 'secondary' },
   ],
   stats: [
-    { id: 'projects', label: 'GitHub repos', value: '30+', detail: 'Public + private + collaborator repos' },
+    { id: 'projects', label: 'My Project', value: '30+', detail: 'Public + private + collaborator repos' },
     { id: 'clients', label: 'Happy clients', value: '14', detail: 'Start-ups, agencies & small businesses' },
     { id: 'focus', label: 'Focus areas', value: 'UI, UX, Dev', detail: 'React, Node.js, Express, MongoDB' },
   ],
