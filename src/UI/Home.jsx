@@ -10,6 +10,105 @@ import '../styles/HeroSection.css'
 
 const BIRTH_DATE_ISO = '1999-09-02'
 const BIRTH_DATE = new Date(BIRTH_DATE_ISO)
+const BIRTH_DATE_LABEL = BIRTH_DATE_ISO.split('-').join('/')
+
+function HeroHeader({ role, firstPart, lastPart, firstTitleLineRef, secondTitleLineRef }) {
+  return (
+    <header className="hero__header">
+      <p className="hero__eyebrow">{role}</p>
+      <h1 className="hero__title">
+        <span
+          ref={firstTitleLineRef}
+          className="hero__title-line hero__title-line--animated"
+          data-title={firstPart}
+        >
+          {firstPart}
+        </span>
+        {lastPart ? (
+          <span
+            ref={secondTitleLineRef}
+            className="hero__title-line hero__title-line--offset hero__title-line--animated"
+            data-title={lastPart}
+          >
+            {lastPart}
+          </span>
+        ) : null}
+      </h1>
+    </header>
+  )
+}
+
+function HeroActions({ ctas }) {
+  return (
+    <div className="hero__actions">
+      {ctas.map((cta) => {
+        const variantClass = cta.variant === 'secondary' ? 'hero__button--ghost' : 'hero__button--solid'
+
+        return (
+          <a key={cta.href} className={`hero__button ${variantClass}`} href={cta.href}>
+            <span className="hero__button-label">{cta.label}</span>
+          </a>
+        )
+      })}
+    </div>
+  )
+}
+
+function HeroContent({ heroTagline, heroCta }) {
+  const ctas = Array.isArray(heroCta) ? heroCta : []
+
+  return (
+    <div className="hero__content">
+      <p className="hero__lede">{heroTagline}</p>
+      <HeroActions ctas={ctas} />
+    </div>
+  )
+}
+
+function HeroVisual({ displayName, age, availabilityNote, refs }) {
+  return (
+    <aside className="hero__visual">
+      <div ref={refs.frame} className="hero__image-frame">
+        <img
+          ref={refs.image}
+          className="hero__image"
+          src={profilePhoto}
+          alt={`Portrait of ${displayName}`}
+          loading="lazy"
+        />
+        <div ref={refs.overlay} className="hero__image-overlay" />
+        <div ref={refs.info} className="hero__image-info">
+          <span className="hero__image-info-name">{displayName}</span>
+          <span className="hero__image-info-age">
+            <span className="hero__image-info-age-value">{age}</span>
+            <span className="hero__image-info-age-label">years</span>
+          </span>
+          <span className="hero__image-info-birthday">Born {BIRTH_DATE_LABEL}</span>
+        </div>
+      </div>
+      {availabilityNote ? (
+        <div className="hero__availability">
+          <span className="hero__availability-label">Available for collaborations</span>
+          <span className="hero__availability-note">{availabilityNote}</span>
+        </div>
+      ) : null}
+    </aside>
+  )
+}
+
+function HeroStats({ stats }) {
+  return (
+    <ul className="hero__stats">
+      {stats.map((stat) => (
+        <li key={stat.id || stat.label}>
+          <span className="hero__stat-value">{stat.value}</span>
+          <span className="hero__stat-label">{stat.label}</span>
+          <span className="hero__stat-detail">{stat.detail}</span>
+        </li>
+      ))}
+    </ul>
+  )
+}
 
 function Home() {
   const { name, role, heroTagline, heroCta, stats, contact } = profileContent
@@ -34,19 +133,20 @@ function Home() {
   useHeroTitleAnimation(firstTitleLineRef, secondTitleLineRef, displayName)
   useImageHoverTimeline({ frameRef, imageRef, overlayRef, infoRef })
 
+  const statsList = Array.isArray(stats) ? stats : []
   const statsWithRepoCount = useMemo(() => {
-    if (!Array.isArray(stats)) {
+    if (!statsList.length) {
       return []
     }
 
-    return stats.map((stat) => {
+    return statsList.map((stat) => {
       if (stat.id !== 'projects' || repoCount === null) {
         return stat
       }
 
       return { ...stat, value: `${repoCount}` }
     })
-  }, [stats, repoCount])
+  }, [statsList, repoCount])
 
   const heroDepthStyle = useMemo(() => {
     const progress = Math.min(Math.max(depthProgress, 0), 1)
@@ -68,80 +168,22 @@ function Home() {
     <AnimatedSection id="home" background="light" className="hero">
       <div className={`hero__depth ${isHeroCompressed ? 'hero__depth--compressed' : ''}`} style={heroDepthStyle}>
         <div className="hero__layout">
-          <header className="hero__header">
-            <p className="hero__eyebrow">{role}</p>
-            <h1 className="hero__title">
-              <span
-                ref={firstTitleLineRef}
-                className="hero__title-line hero__title-line--animated"
-                data-title={firstPart}
-              >
-                {firstPart}
-              </span>
-              {lastPart ? (
-                <span
-                  ref={secondTitleLineRef}
-                  className="hero__title-line hero__title-line--offset hero__title-line--animated"
-                  data-title={lastPart}
-                >
-                  {lastPart}
-                </span>
-              ) : null}
-            </h1>
-          </header>
-
-          <div className="hero__content">
-            <p className="hero__lede">{heroTagline}</p>
-            <div className="hero__actions">
-              {heroCta.map((cta) => {
-                const variantClass = cta.variant === 'secondary' ? 'hero__button--ghost' : 'hero__button--solid'
-
-                return (
-                  <a key={cta.href} className={`hero__button ${variantClass}`} href={cta.href}>
-                    <span className="hero__button-label">{cta.label}</span>
-                  </a>
-                )
-              })}
-            </div>
-          </div>
-
-          <aside className="hero__visual">
-            <div ref={frameRef} className="hero__image-frame">
-              <img
-                ref={imageRef}
-                className="hero__image"
-                src={profilePhoto}
-                alt={`Portrait of ${displayName}`}
-                loading="lazy"
-              />
-              <div ref={overlayRef} className="hero__image-overlay" />
-              <div ref={infoRef} className="hero__image-info">
-                <span className="hero__image-info-name">{displayName}</span>
-                <span className="hero__image-info-age">
-                  <span className="hero__image-info-age-value">{age}</span>
-                  <span className="hero__image-info-age-label">years</span>
-                </span>
-                <span className="hero__image-info-birthday">Born {BIRTH_DATE_ISO.split('-').join('/')}</span>
-              </div>
-            </div>
-            {availabilityNote ? (
-              <div className="hero__availability">
-                <span className="hero__availability-label">Available for collaborations</span>
-                <span className="hero__availability-note">{availabilityNote}</span>
-              </div>
-            ) : null}
-          </aside>
+          <HeroHeader
+            role={role}
+            firstPart={firstPart}
+            lastPart={lastPart}
+            firstTitleLineRef={firstTitleLineRef}
+            secondTitleLineRef={secondTitleLineRef}
+          />
+          <HeroContent heroTagline={heroTagline} heroCta={heroCta} />
+          <HeroVisual
+            displayName={displayName}
+            age={age}
+            availabilityNote={availabilityNote}
+            refs={{ frame: frameRef, image: imageRef, overlay: overlayRef, info: infoRef }}
+          />
         </div>
-
-        <ul className="hero__stats">
-          {statsWithRepoCount.map((stat) => (
-            <li key={stat.id || stat.label}>
-              <span className="hero__stat-value">{stat.value}</span>
-              <span className="hero__stat-label">{stat.label}</span>
-              <span className="hero__stat-detail">{stat.detail}</span>
-            </li>
-          ))}
-        </ul>
+        <HeroStats stats={statsWithRepoCount} />
       </div>
     </AnimatedSection>
   )

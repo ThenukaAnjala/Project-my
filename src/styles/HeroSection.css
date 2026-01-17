@@ -298,6 +298,7 @@
   background: rgba(26, 25, 23, 0.05);
   box-shadow: 0 42px 60px -40px rgba(0, 0, 0, 0.4);
   isolation: isolate;
+  transform: translateY(-10px);
 }
 
 .hero__image {
