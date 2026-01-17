@@ -1,10 +1,9 @@
-import { useEffect, useLayoutEffect, useRef, useState, useMemo } from 'react'
-import AnimatedSection from './AnimatedSection'
+import { useEffect, useRef, useState, useMemo } from 'react'
+import AnimatedSection from '../components/AnimatedSection'
 import { profileContent } from '../data/portfolioContent'
 import profilePhoto from '../assets/images/profile/My Photo.jpg'
+import { useIsomorphicLayoutEffect } from '../hooks/useIsomorphicLayoutEffect'
 import '../styles/HeroSection.css'
-
-const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
 const BIRTH_DATE_ISO = '1999-09-02'
 const BIRTH_DATE = new Date(BIRTH_DATE_ISO)
@@ -169,8 +168,8 @@ function Home() {
     }
   }, [githubUsername])
 
-useEffect(() => {
-  const frameEl = frameRef.current
+  useEffect(() => {
+    const frameEl = frameRef.current
     const imageEl = imageRef.current
     const overlayEl = overlayRef.current
     const infoEl = infoRef.current

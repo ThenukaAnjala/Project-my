@@ -1,4 +1,4 @@
-import AnimatedSection from './AnimatedSection'
+import AnimatedSection from '../components/AnimatedSection'
 import { profileContent } from '../data/portfolioContent'
 import '../styles/Testimonials.css'
 
