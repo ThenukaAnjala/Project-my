@@ -24,7 +24,7 @@ const calculateAge = (referenceDate) => {
   return age
 }
 
-function HeroSection() {
+function Home() {
   const { name, role, heroTagline, heroCta, stats, contact } = profileContent
   const githubUsername = profileContent.githubUsername || 'ThenukaAnjala'
   const trimmedName = (name || '').trim()
@@ -35,11 +35,8 @@ function HeroSection() {
 
   const [age, setAge] = useState(() => calculateAge(new Date()))
   const [repoCount, setRepoCount] = useState(null)
-  const [depthProgress, setDepthProgress] = useState(0)
-  const [isHeroCompressed, setIsHeroCompressed] = useState(false)
-  const depthProgressRef = useRef(0)
-  const compressedStateRef = useRef(false)
-  const heroDepthRef = useRef(null)
+  const depthProgress = 0
+  const isHeroCompressed = false
 
   const firstTitleLineRef = useRef(null)
   const secondTitleLineRef = useRef(null)
@@ -171,127 +168,6 @@ function HeroSection() {
       controller.abort()
     }
   }, [githubUsername])
-
-  useEffect(() => {
-    if (typeof window === 'undefined') {
-      return undefined
-    }
-
-    const heroSection = document.getElementById('home')
-    if (!heroSection) {
-      document.documentElement.style.removeProperty('--hero-recede-progress')
-      return undefined
-    }
-
-    const rootEl = document.documentElement
-    const setGlobalProgress = (value) => {
-      const clamped = Math.min(Math.max(value, 0), 1)
-      rootEl.style.setProperty('--hero-recede-progress', clamped.toFixed(3))
-    }
-
-    const clearGlobalProgress = () => {
-      rootEl.style.removeProperty('--hero-recede-progress')
-    }
-
-    const motionQuery = window.matchMedia?.('(prefers-reduced-motion: reduce)')
-    let respectReducedMotion = motionQuery?.matches ?? false
-    let frameId = 0
-    let listenersAttached = false
-    const legacyMotionQuery =
-      motionQuery && !motionQuery.addEventListener && motionQuery.addListener ? motionQuery : null
-
-    const syncDepth = () => {
-      frameId = 0
-      const rect = heroSection.getBoundingClientRect()
-      const height = rect.height || 1
-      const progress = Math.min(Math.max(-rect.top / height, 0), 1)
-
-      if (Math.abs(progress - depthProgressRef.current) > 0.015) {
-        depthProgressRef.current = progress
-        setDepthProgress(progress)
-      }
-
-      setGlobalProgress(progress)
-
-      const shouldCompress = progress > 0.12
-      if (shouldCompress !== compressedStateRef.current) {
-        compressedStateRef.current = shouldCompress
-        setIsHeroCompressed(shouldCompress)
-      }
-    }
-
-    const handleScroll = () => {
-      if (respectReducedMotion || frameId) {
-        return
-      }
-      frameId = window.requestAnimationFrame(syncDepth)
-    }
-
-    const attachListeners = () => {
-      if (listenersAttached || respectReducedMotion) {
-        return
-      }
-      window.addEventListener('scroll', handleScroll, { passive: true })
-      window.addEventListener('resize', handleScroll)
-      listenersAttached = true
-    }
-
-    const detachListeners = () => {
-      if (!listenersAttached) {
-        return
-      }
-      window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', handleScroll)
-      listenersAttached = false
-    }
-
-    const resetDepth = () => {
-      if (frameId) {
-        window.cancelAnimationFrame(frameId)
-        frameId = 0
-      }
-      depthProgressRef.current = 0
-      compressedStateRef.current = false
-      setDepthProgress(0)
-      setIsHeroCompressed(false)
-      setGlobalProgress(0)
-    }
-
-    const handleMotionChange = (event) => {
-      const prefersReduce =
-        typeof event.matches === 'boolean' ? event.matches : motionQuery?.matches ?? false
-
-      respectReducedMotion = prefersReduce
-
-      if (prefersReduce) {
-        detachListeners()
-        resetDepth()
-      } else {
-        syncDepth()
-        attachListeners()
-      }
-    }
-
-    if (!respectReducedMotion) {
-      syncDepth()
-      attachListeners()
-    } else {
-      resetDepth()
-    }
-
-    motionQuery?.addEventListener?.('change', handleMotionChange)
-    legacyMotionQuery?.addListener?.(handleMotionChange)
-
-    return () => {
-      detachListeners()
-      if (frameId) {
-        window.cancelAnimationFrame(frameId)
-      }
-      motionQuery?.removeEventListener?.('change', handleMotionChange)
-      legacyMotionQuery?.removeListener?.(handleMotionChange)
-      clearGlobalProgress()
-    }
-  }, [])
 
 useEffect(() => {
   const frameEl = frameRef.current
@@ -429,11 +305,7 @@ useEffect(() => {
 
   return (
     <AnimatedSection id="home" background="light" className="hero">
-      <div
-        ref={heroDepthRef}
-        className={`hero__depth ${isHeroCompressed ? 'hero__depth--compressed' : ''}`}
-        style={heroDepthStyle}
-      >
+      <div className={`hero__depth ${isHeroCompressed ? 'hero__depth--compressed' : ''}`} style={heroDepthStyle}>
         <div className="hero__layout">
           <header className="hero__header">
             <p className="hero__eyebrow">{role}</p>
@@ -514,5 +386,5 @@ useEffect(() => {
   )
 }
 
-export default HeroSection
+export default Home
 

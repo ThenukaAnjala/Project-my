@@ -2,7 +2,7 @@ import AnimatedSection from './AnimatedSection'
 import { profileContent } from '../data/portfolioContent'
 import '../styles/StackShowcase.css'
 
-function StackShowcase() {
+function Stack() {
   const { stack } = profileContent
 
   return (
@@ -33,5 +33,5 @@ function StackShowcase() {
   )
 }
 
-export default StackShowcase
+export default Stack
 

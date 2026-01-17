@@ -4,8 +4,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: min(100% - 3rem, 1100px);
-  margin: 0 auto 2rem;
+  width: 100%;
+  margin: 0 0 2rem;
   padding: 1.1rem 1.75rem;
   border-radius: 999px;
   background: rgba(253, 251, 246, 0.95);
@@ -414,7 +414,7 @@
 
 @media (max-width: 1080px) {
   .navbar {
-    width: min(100% - 2.25rem, 100%);
+    width: 100%;
     padding: 0.85rem 1.25rem;
   }
 
@@ -426,7 +426,7 @@
 @media (max-width: 720px) {
   .navbar {
     top: 1rem;
-    width: min(100% - 1.5rem, 100%);
+    width: 100%;
     padding: 0.7rem 1rem;
   }
 
@@ -471,7 +471,7 @@
 @media (max-width: 540px) {
   .navbar {
     top: 0.75rem;
-    width: min(100% - 1rem, 100%);
+    width: 100%;
     padding: 0.55rem 0.75rem;
   }
 

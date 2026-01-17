@@ -2,7 +2,7 @@ import AnimatedSection from './AnimatedSection'
 import { profileContent } from '../data/portfolioContent'
 import '../styles/ProjectGallery.css'
 
-function ProjectGallery() {
+function Projects() {
   const { projects } = profileContent
 
   return (
@@ -39,5 +39,5 @@ function ProjectGallery() {
   )
 }
 
-export default ProjectGallery
+export default Projects
 

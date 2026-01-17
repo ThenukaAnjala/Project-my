@@ -1,11 +1,11 @@
 import './App.css'
 import NavBar from './components/NavBar'
-import HeroSection from './components/HeroSection'
-import AboutSection from './components/AboutSection'
-import StackShowcase from './components/StackShowcase'
-import ProjectGallery from './components/ProjectGallery'
+import Home from './components/Home'
+import About from './components/About'
+import Stack from './components/Stack'
+import Projects from './components/Projects'
 import Testimonials from './components/Testimonials'
-import ContactSection from './components/ContactSection'
+import Contact from './components/Contact'
 import SiteFooter from './components/SiteFooter'
 
 function App() {
@@ -13,12 +13,12 @@ function App() {
     <div className="page">
       <NavBar />
       <main className="page__content">
-        <HeroSection />
-        <AboutSection />
-        <StackShowcase />
-        <ProjectGallery />
+        <Home />
+        <About />
+        <Stack />
+        <Projects />
         <Testimonials />
-        <ContactSection />
+        <Contact />
       </main>
       <SiteFooter />
     </div>

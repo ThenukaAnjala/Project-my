@@ -2,7 +2,7 @@ import AnimatedSection from './AnimatedSection'
 import { profileContent } from '../data/portfolioContent'
 import '../styles/ContactSection.css'
 
-function ContactSection() {
+function Contact() {
   const { contact, location } = profileContent
 
   return (
@@ -90,4 +90,4 @@ function ContactSection() {
   )
 }
 
-export default ContactSection
+export default Contact

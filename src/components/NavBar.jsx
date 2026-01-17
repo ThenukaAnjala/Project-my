@@ -11,7 +11,6 @@ const SECTIONS = [
   { id: 'contact', label: 'Contact' },
 ]
 
-const COLLAPSE_OFFSET = 140
 const MOBILE_BREAKPOINT = 960
 
 function NavBar() {
@@ -27,28 +26,16 @@ function NavBar() {
   const brandLast = brandRest.join(' ')
 
   useEffect(() => {
-    const resolveCollapseThreshold = () => {
-      const hero = document.getElementById('home')
-      if (!hero) {
-        return COLLAPSE_OFFSET
-      }
-      return Math.max(0, hero.offsetTop + hero.offsetHeight - COLLAPSE_OFFSET)
-    }
-
     const syncCollapseState = () => {
-      const threshold = resolveCollapseThreshold()
-      const hasScrolledPastHero = window.scrollY >= threshold
       const isNarrowViewport = window.innerWidth <= MOBILE_BREAKPOINT
-      setIsCollapsed(hasScrolledPastHero || isNarrowViewport)
+      setIsCollapsed(isNarrowViewport)
     }
 
     syncCollapseState()
 
-    window.addEventListener('scroll', syncCollapseState, { passive: true })
     window.addEventListener('resize', syncCollapseState)
 
     return () => {
-      window.removeEventListener('scroll', syncCollapseState)
       window.removeEventListener('resize', syncCollapseState)
     }
   }, [])

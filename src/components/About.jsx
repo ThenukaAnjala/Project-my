@@ -2,7 +2,7 @@ import AnimatedSection from './AnimatedSection'
 import { profileContent } from '../data/portfolioContent'
 import '../styles/AboutSection.css'
 
-function AboutSection() {
+function About() {
   const { about } = profileContent
 
   return (
@@ -29,5 +29,5 @@ function AboutSection() {
   )
 }
 
-export default AboutSection
+export default About
 
