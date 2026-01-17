@@ -2,24 +2,24 @@
   font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.6;
   font-weight: 400;
-  color: #1f1b16;
-  background-color: #f7f0e6;
+  color: #1a1917;
+  background-color: #f6f2e8;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
 
-  --color-surface: #fdf9f3;
-  --color-surface-muted: #f2e7d8;
-  --color-surface-dark: #0f1412;
-  --color-text: #1f1b16;
-  --color-text-inverse: #fdfbf6;
-  --color-muted: rgba(31, 27, 22, 0.6);
-  --color-border: rgba(31, 27, 22, 0.12);
-  --color-accent: #1f6f5b;
-  --color-accent-contrast: #fdfbf6;
-  --color-accent-soft: rgba(31, 111, 91, 0.14);
-  --shadow-lg: 0 30px 60px -44px rgba(15, 20, 18, 0.55);
+  --color-surface: #fdfbf6;
+  --color-surface-muted: #f3efe4;
+  --color-surface-dark: #0b0b0b;
+  --color-text: #1a1917;
+  --color-text-inverse: #f8f7f1;
+  --color-muted: rgba(26, 25, 23, 0.56);
+  --color-border: rgba(26, 25, 23, 0.12);
+  --color-accent: #1a1917;
+  --color-accent-contrast: #f8f7f1;
+  --color-accent-soft: rgba(26, 25, 23, 0.08);
+  --shadow-lg: 0 28px 60px -44px rgba(17, 17, 17, 0.6);
   --hero-recede-progress: 0;
 }
 
@@ -30,7 +30,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: linear-gradient(180deg, #fdf9f3 0%, #efe3d3 100%);
+  background: linear-gradient(180deg, #fdfbf6 0%, #f4efe3 100%);
   color: var(--color-text);
 }
 
