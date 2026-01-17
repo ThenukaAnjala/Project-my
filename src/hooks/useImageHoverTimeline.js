@@ -30,7 +30,7 @@ export const useImageHoverTimeline = ({ frameRef, imageRef, overlayRef, infoRef 
       const overlayAnimation = overlayEl.animate(
         [
           { opacity: 0.72, transform: 'translateY(0%)' },
-          { opacity: 0.25, transform: 'translateY(8%)' },
+          { opacity: 0.25, transform: 'translateY(0%)' },
         ],
         { duration: 520, fill: 'forwards', easing: easingIn }
       )
