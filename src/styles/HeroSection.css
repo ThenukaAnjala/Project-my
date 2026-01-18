@@ -48,7 +48,7 @@
   font-size: 0.82rem;
   text-transform: uppercase;
   letter-spacing: 0.28em;
-  color: rgba(26, 25, 23, 0.45);
+  color: var(--color-muted);
   margin: 0;
   user-select: none;
 }
@@ -144,8 +144,8 @@
 
   .hero__title-line--animated {
     animation: none;
-    color: #1a1917;
-    -webkit-text-fill-color: #1a1917;
+    color: var(--color-text);
+    -webkit-text-fill-color: var(--color-text);
     text-shadow: none;
   }
 
@@ -198,7 +198,7 @@
   margin: 0;
   font-size: 1.05rem;
   line-height: 1.7;
-  color: rgba(26, 25, 23, 0.6);
+  color: var(--color-muted);
 }
 
 .hero__actions {
@@ -235,8 +235,8 @@
   isolation: isolate;
   overflow: hidden;
   z-index: 0;
-  background: #000;
-  color: #fff;
+  background: var(--color-text);
+  color: var(--color-text-inverse);
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   will-change: transform, box-shadow;
@@ -262,9 +262,9 @@
 .hero__button:hover,
 .hero__button:focus-visible {
   transform: translate3d(0, -2px, 0);
-  background: #fff;
-  color: #000;
-  border-color: #000;
+  background: var(--color-text-inverse);
+  color: var(--color-text);
+  border-color: var(--color-text);
   box-shadow: 0 28px 60px -26px rgba(0, 0, 0, 0.82);
 }
 
@@ -275,7 +275,8 @@
 
 .hero__button:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #000, 0 28px 60px -26px rgba(0, 0, 0, 0.82);
+  box-shadow: 0 0 0 2px var(--color-text-inverse), 0 0 0 4px var(--color-text),
+    0 28px 60px -26px rgba(0, 0, 0, 0.82);
 }
 
 .hero__button:active {
@@ -292,10 +293,10 @@
   width: min(320px, 55vw);
   aspect-ratio: 3 / 4;
   border-radius: 28px;
-  border: 1px solid rgba(26, 25, 23, 0.1);
+  border: 1px solid var(--color-border);
   overflow: hidden;
   position: relative;
-  background: rgba(26, 25, 23, 0.05);
+  background: var(--color-accent-soft);
   box-shadow: 0 42px 60px -40px rgba(0, 0, 0, 0.4);
   isolation: isolate;
   margin-top: clamp(-240px, -16vw, -80px);
@@ -399,7 +400,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
-  color: rgba(26, 25, 23, 0.6);
+  color: var(--color-muted);
 }
 
 .hero__availability-label {
@@ -424,14 +425,14 @@
 
 .hero__stats li {
   padding-top: 1.25rem;
-  border-top: 1px solid rgba(26, 25, 23, 0.12);
+  border-top: 1px solid var(--color-border);
 }
 
 .hero__stat-value {
   display: block;
   font-size: 1.85rem;
   font-weight: 600;
-  color: #1a1917;
+  color: var(--color-text);
 }
 
 .hero__stat-label {
@@ -439,15 +440,20 @@
   font-size: 0.78rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: rgba(26, 25, 23, 0.45);
+  color: var(--color-muted);
   margin-top: 0.35rem;
 }
 
 .hero__stat-detail {
   display: block;
   font-size: 0.95rem;
-  color: rgba(26, 25, 23, 0.6);
+  color: var(--color-muted);
   margin-top: 0.45rem;
+}
+
+:root[data-theme="dark"] .hero__button {
+  border-color: rgba(0, 0, 0, 0.35);
+  box-shadow: 0 22px 46px -24px rgba(0, 0, 0, 0.5);
 }
 
 @media (max-width: 960px) {

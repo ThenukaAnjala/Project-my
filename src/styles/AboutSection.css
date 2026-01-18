@@ -37,7 +37,7 @@
   margin: 0;
   padding: 1.5rem;
   border-radius: 20px;
-  background: rgba(0, 0, 0, 0.05);
+  background: var(--color-accent-soft);
   display: flex;
   flex-direction: column;
   gap: 1rem;

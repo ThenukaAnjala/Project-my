@@ -100,7 +100,7 @@
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.24em;
-  color: rgba(26, 25, 23, 0.48);
+  color: var(--color-muted);
 }
 
 .scroll-story__step-title {
@@ -144,7 +144,7 @@
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.3em;
-  color: rgba(26, 25, 23, 0.45);
+  color: var(--color-muted);
 }
 
 .scroll-story__visual {
@@ -230,6 +230,10 @@
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--color-text);
+}
+
+:root[data-theme="dark"] .scroll-story__progress-bar {
+  background: linear-gradient(90deg, rgba(245, 242, 234, 0.35), rgba(245, 242, 234, 0.9));
 }
 
 @media (max-width: 960px) {

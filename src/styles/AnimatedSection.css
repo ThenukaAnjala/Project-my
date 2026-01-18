@@ -71,6 +71,10 @@
   color: rgba(245, 245, 245, 0.7);
 }
 
+:root[data-theme="dark"] .section--dark {
+  color: var(--color-text);
+}
+
 @media (max-width: 640px) {
   .section__inner {
     padding: 2.75rem 1.75rem;

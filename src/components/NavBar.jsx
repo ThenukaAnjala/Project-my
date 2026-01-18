@@ -12,10 +12,33 @@ const SECTIONS = [
 ]
 
 const MOBILE_BREAKPOINT = 960
+const THEME_STORAGE_KEY = 'theme-preference'
+
+const getInitialTheme = () => {
+  if (typeof window === 'undefined') {
+    return 'light'
+  }
+
+  try {
+    const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY)
+    if (storedTheme === 'light' || storedTheme === 'dark') {
+      return storedTheme
+    }
+  } catch {
+    // Ignore storage errors and fall back to system preference.
+  }
+
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    return 'dark'
+  }
+
+  return 'light'
+}
 
 function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
+  const [theme, setTheme] = useState(getInitialTheme)
 
   const menuId = 'primary-navigation'
   const contactDetails = profileContent?.contact || {}
@@ -58,8 +81,27 @@ function NavBar() {
     }
   }, [isCollapsed, isMenuOpen])
 
+  useEffect(() => {
+    if (typeof document === 'undefined') {
+      return
+    }
+
+    document.documentElement.dataset.theme = theme
+    document.documentElement.style.colorScheme = theme
+
+    try {
+      window.localStorage.setItem(THEME_STORAGE_KEY, theme)
+    } catch {
+      // Ignore storage errors (private mode, etc.).
+    }
+  }, [theme])
+
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev)
+  }
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))
   }
 
   const closeMenu = () => setIsMenuOpen(false)
@@ -77,6 +119,8 @@ function NavBar() {
 
   const showInlineMenu = !isCollapsed
   const overlayIsVisible = isCollapsed && isMenuOpen
+  const isDarkTheme = theme === 'dark'
+  const themeLabel = isDarkTheme ? 'Switch to light mode' : 'Switch to dark mode'
 
   return (
     <>
@@ -97,29 +141,61 @@ function NavBar() {
           </span>
         </a>
 
-        <button
-          className={`navbar__toggle ${isCollapsed ? 'navbar__toggle--visible' : ''} ${isMenuOpen ? 'navbar__toggle--active' : ''}`}
-          onClick={toggleMenu}
-          aria-expanded={isMenuOpen}
-          aria-controls={menuId}
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar__toggle-line" />
-          <span className="navbar__toggle-line" />
-        </button>
+        <div className="navbar__actions">
+          <nav id={menuId} className={`navbar__menu ${showInlineMenu ? 'navbar__menu--visible' : ''}`} aria-hidden={!showInlineMenu}>
+            {SECTIONS.map((section) => (
+              <a
+                key={section.id}
+                href={`#${section.id}`}
+                onClick={(event) => handleNavClick(event, section.id)}
+                className="navbar__link"
+              >
+                {section.label}
+              </a>
+            ))}
+          </nav>
 
-        <nav id={menuId} className={`navbar__menu ${showInlineMenu ? 'navbar__menu--visible' : ''}`} aria-hidden={!showInlineMenu}>
-          {SECTIONS.map((section) => (
-            <a
-              key={section.id}
-              href={`#${section.id}`}
-              onClick={(event) => handleNavClick(event, section.id)}
-              className="navbar__link"
-            >
-              {section.label}
-            </a>
-          ))}
-        </nav>
+          <button
+            type="button"
+            className={`navbar__theme-toggle ${isDarkTheme ? 'navbar__theme-toggle--dark' : ''}`}
+            onClick={toggleTheme}
+            aria-pressed={isDarkTheme}
+            aria-label={themeLabel}
+          >
+            <svg className="navbar__theme-icon navbar__theme-icon--sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <circle cx="12" cy="12" r="4" fill="currentColor" />
+              <g fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                <line x1="12" y1="2.5" x2="12" y2="5" />
+                <line x1="12" y1="19" x2="12" y2="21.5" />
+                <line x1="2.5" y1="12" x2="5" y2="12" />
+                <line x1="19" y1="12" x2="21.5" y2="12" />
+                <line x1="5.1" y1="5.1" x2="6.9" y2="6.9" />
+                <line x1="17.1" y1="17.1" x2="18.9" y2="18.9" />
+                <line x1="17.1" y1="6.9" x2="18.9" y2="5.1" />
+                <line x1="5.1" y1="18.9" x2="6.9" y2="17.1" />
+              </g>
+            </svg>
+            <svg className="navbar__theme-icon navbar__theme-icon--moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path
+                d="M15.6 12.2a6.4 6.4 0 0 1-7.8-7.8 7.5 7.5 0 1 0 7.8 7.8Z"
+                fill="currentColor"
+              />
+            </svg>
+            <span className="navbar__theme-knob" aria-hidden="true" />
+          </button>
+
+          <button
+            className={`navbar__toggle ${isCollapsed ? 'navbar__toggle--visible' : ''} ${isMenuOpen ? 'navbar__toggle--active' : ''}`}
+            onClick={toggleMenu}
+            aria-expanded={isMenuOpen}
+            aria-controls={menuId}
+            aria-label="Toggle navigation"
+            type="button"
+          >
+            <span className="navbar__toggle-line" />
+            <span className="navbar__toggle-line" />
+          </button>
+        </div>
       </header>
 
       {overlayIsVisible ? (
