@@ -14,7 +14,21 @@
   box-shadow: var(--shadow-lg);
   backdrop-filter: blur(16px);
   z-index: 30;
-  transition: padding 220ms ease, width 220ms ease, box-shadow 180ms ease, top 220ms ease;
+  transform: translateY(0);
+  opacity: 1;
+  transition: padding 220ms ease, width 220ms ease, box-shadow 180ms ease, top 220ms ease, transform 240ms ease,
+    opacity 200ms ease, background 240ms ease, border-color 240ms ease;
+}
+
+.navbar--scrolled {
+  padding: 0.85rem 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.navbar--hidden {
+  transform: translateY(-140%);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .navbar__brand {
@@ -751,6 +765,15 @@
 
 
 @media (prefers-reduced-motion: reduce) {
+  .navbar {
+    transition: none;
+  }
+
+  .navbar--hidden {
+    transform: none;
+    opacity: 1;
+  }
+
   .navbar__toggle,
   .navbar__overlay-close {
     transition: none;

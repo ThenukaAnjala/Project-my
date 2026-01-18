@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { profileContent } from '../data/portfolioContent'
 import '../styles/NavBar.css'
 
@@ -12,6 +12,8 @@ const SECTIONS = [
 ]
 
 const MOBILE_BREAKPOINT = 960
+const SCROLL_HIDE_OFFSET = 120
+const SCROLL_ACTIVE_OFFSET = 12
 const THEME_STORAGE_KEY = 'theme-preference'
 
 const getInitialTheme = () => {
@@ -38,7 +40,10 @@ const getInitialTheme = () => {
 function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isHidden, setIsHidden] = useState(false)
   const [theme, setTheme] = useState(getInitialTheme)
+  const lastScrollY = useRef(0)
 
   const menuId = 'primary-navigation'
   const contactDetails = profileContent?.contact || {}
@@ -80,6 +85,58 @@ function NavBar() {
       document.body.style.removeProperty('overflow')
     }
   }, [isCollapsed, isMenuOpen])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return
+    }
+
+    let ticking = false
+
+    const updateScrollState = () => {
+      const currentY = window.scrollY || window.pageYOffset
+
+      if (isMenuOpen) {
+        setIsHidden(false)
+        lastScrollY.current = currentY
+        setIsScrolled(currentY > SCROLL_ACTIVE_OFFSET)
+        return
+      }
+
+      const isBeyondHero = currentY > SCROLL_ACTIVE_OFFSET
+      const isScrollingDown = currentY > lastScrollY.current && currentY > SCROLL_HIDE_OFFSET
+      const shouldReveal = currentY <= SCROLL_HIDE_OFFSET
+
+      setIsScrolled(isBeyondHero)
+      setIsHidden(isScrollingDown && !shouldReveal)
+      lastScrollY.current = currentY
+    }
+
+    const handleScroll = () => {
+      if (ticking) {
+        return
+      }
+
+      ticking = true
+      window.requestAnimationFrame(() => {
+        updateScrollState()
+        ticking = false
+      })
+    }
+
+    updateScrollState()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [isMenuOpen])
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      setIsHidden(false)
+    }
+  }, [isMenuOpen])
 
   useEffect(() => {
     if (typeof document === 'undefined') {
@@ -124,7 +181,11 @@ function NavBar() {
 
   return (
     <>
-      <header className={`navbar ${isCollapsed ? 'navbar--collapsed' : ''}`}>
+      <header
+        className={`navbar ${isCollapsed ? 'navbar--collapsed' : ''} ${isScrolled ? 'navbar--scrolled' : ''} ${
+          isHidden ? 'navbar--hidden' : ''
+        }`}
+      >
         <a className="navbar__brand" href="#home" onClick={(event) => handleNavClick(event, 'home')}>
           <span className="navbar__logo" aria-hidden="true">
             TG
