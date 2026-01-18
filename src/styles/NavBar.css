@@ -575,6 +575,41 @@
   }
 }
 
+@media (max-width: 960px) {
+  .navbar__overlay {
+    justify-content: center;
+  }
+
+  .navbar__overlay-content {
+    width: min(720px, 92vw);
+    margin: auto;
+    padding: clamp(2.4rem, 6vw, 4rem) clamp(1.5rem, 5vw, 2.75rem);
+    align-items: center;
+    text-align: center;
+  }
+
+  .navbar__overlay-menu {
+    align-items: center;
+  }
+
+  .navbar__overlay-link {
+    font-size: clamp(1.9rem, 5.6vw, 3.1rem);
+    letter-spacing: 0.12em;
+  }
+
+  .navbar__overlay-meta {
+    align-items: center;
+  }
+
+  .navbar__overlay-email {
+    align-items: center;
+  }
+
+  .navbar__overlay-socials {
+    justify-content: center;
+  }
+}
+
 @media (max-width: 720px) {
   .navbar {
     top: 1rem;
