@@ -42,6 +42,7 @@ function NavBar() {
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isHidden, setIsHidden] = useState(false)
+  const [activeSection, setActiveSection] = useState('home')
   const [theme, setTheme] = useState(getInitialTheme)
   const lastScrollY = useRef(0)
 
@@ -133,6 +134,36 @@ function NavBar() {
   }, [isMenuOpen])
 
   useEffect(() => {
+    if (typeof window === 'undefined') {
+      return
+    }
+
+    const sectionElements = SECTIONS.map((section) => document.getElementById(section.id)).filter(Boolean)
+    if (!sectionElements.length) {
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id)
+          }
+        })
+      },
+      {
+        root: null,
+        rootMargin: '-45% 0px -45% 0px',
+        threshold: 0.1,
+      },
+    )
+
+    sectionElements.forEach((section) => observer.observe(section))
+
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
     if (isMenuOpen) {
       setIsHidden(false)
     }
@@ -168,6 +199,7 @@ function NavBar() {
 
     const target = document.getElementById(id)
     if (target) {
+      setActiveSection(id)
       target.scrollIntoView({ behavior: 'smooth' })
     }
 
@@ -209,7 +241,7 @@ function NavBar() {
                 key={section.id}
                 href={`#${section.id}`}
                 onClick={(event) => handleNavClick(event, section.id)}
-                className="navbar__link"
+                className={`navbar__link ${activeSection === section.id ? 'navbar__link--active' : ''}`}
               >
                 {section.label}
               </a>
@@ -270,7 +302,7 @@ function NavBar() {
                   key={section.id}
                   href={`#${section.id}`}
                   onClick={(event) => handleNavClick(event, section.id)}
-                  className="navbar__overlay-link"
+                  className={`navbar__overlay-link ${activeSection === section.id ? 'navbar__overlay-link--active' : ''}`}
                 >
                   {section.label}
                 </a>

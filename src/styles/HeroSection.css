@@ -420,19 +420,85 @@
   margin: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1.85rem;
+  gap: clamp(1rem, 2vw, 1.5rem);
 }
 
 .hero__stats li {
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--color-border);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.5rem 1.6rem;
+  border-radius: 20px;
+  border: 1px solid var(--color-border);
+  background: linear-gradient(135deg, var(--color-accent-soft), transparent 65%);
+  box-shadow: 0 18px 40px -32px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  animation: heroStatPop 880ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--stat-delay, 0) * 120ms);
+  will-change: transform, opacity;
+  transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease, background 240ms ease;
+}
+
+.hero__stats li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 1.6rem;
+  width: 46px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-text), transparent);
+  opacity: 0.45;
+  transform: scaleX(0.6);
+  transform-origin: left;
+  animation: heroStatLine 900ms ease both;
+  animation-delay: calc(var(--stat-delay, 0) * 120ms);
+}
+
+.hero__stats li::after {
+  content: '';
+  position: absolute;
+  inset: -40% -60% auto auto;
+  width: 120%;
+  height: 200%;
+  background: linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, 0.35) 50%, transparent 65%);
+  opacity: 0.35;
+  transform: translateX(-160%) skewX(-12deg);
+  animation: heroStatSweep 1400ms ease both;
+  animation-delay: calc(var(--stat-delay, 0) * 140ms + 120ms);
+  pointer-events: none;
+}
+
+.hero__stats li:nth-child(1) {
+  --stat-delay: 0;
+}
+
+.hero__stats li:nth-child(2) {
+  --stat-delay: 1;
+}
+
+.hero__stats li:nth-child(3) {
+  --stat-delay: 2;
+}
+
+.hero__stats li:nth-child(4) {
+  --stat-delay: 3;
+}
+
+.hero__stats li:nth-child(5) {
+  --stat-delay: 4;
+}
+
+.hero__stats li:nth-child(6) {
+  --stat-delay: 5;
 }
 
 .hero__stat-value {
   display: block;
-  font-size: 1.85rem;
+  font-size: clamp(1.8rem, 2.4vw, 2.3rem);
   font-weight: 600;
   color: var(--color-text);
+  letter-spacing: -0.02em;
 }
 
 .hero__stat-label {
@@ -448,7 +514,65 @@
   display: block;
   font-size: 0.95rem;
   color: var(--color-muted);
-  margin-top: 0.45rem;
+  margin-top: 0.4rem;
+  line-height: 1.55;
+  max-width: 26ch;
+}
+
+:root[data-theme="dark"] .hero__stats li {
+  background: linear-gradient(135deg, rgba(245, 242, 234, 0.08), transparent 70%);
+  box-shadow: 0 18px 40px -32px rgba(0, 0, 0, 0.7);
+}
+
+@media (hover: hover) {
+  .hero__stats li:hover {
+    transform: translateY(-6px);
+    border-color: rgba(26, 25, 23, 0.28);
+    box-shadow: 0 24px 48px -32px rgba(0, 0, 0, 0.45);
+  }
+}
+
+@keyframes heroStatPop {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.97);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes heroStatLine {
+  from {
+    transform: scaleX(0);
+    opacity: 0.2;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 0.45;
+  }
+}
+
+@keyframes heroStatSweep {
+  from {
+    transform: translateX(-160%) skewX(-12deg);
+  }
+  to {
+    transform: translateX(120%) skewX(-12deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__stats li,
+  .hero__stats li::before,
+  .hero__stats li::after {
+    animation: none;
+  }
 }
 
 :root[data-theme="dark"] .hero__button {
@@ -545,6 +669,10 @@
 
   .hero__stats {
     gap: 1rem;
+  }
+
+  .hero__stats li {
+    padding: 1.2rem 1.3rem;
   }
 
   .hero__stat-value {

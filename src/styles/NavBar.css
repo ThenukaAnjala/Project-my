@@ -166,6 +166,15 @@
   width: 100%;
 }
 
+.navbar__link--active {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.navbar__link--active::after {
+  width: 100%;
+}
+
 .navbar__toggle {
   position: relative;
   display: inline-flex;
@@ -480,6 +489,11 @@
 .navbar__overlay-link:hover {
   transform: translateX(-12px);
   color: #ffffff;
+}
+
+.navbar__overlay-link--active {
+  color: #ffffff;
+  text-shadow: 0 12px 30px rgba(255, 255, 255, 0.2);
 }
 
 .navbar__overlay-meta {
