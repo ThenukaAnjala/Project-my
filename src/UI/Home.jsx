@@ -206,7 +206,7 @@ function Home() {
   const modalDescId = activeStat ? `stat-modal-desc-${activeStat.id || 'stat'}` : undefined
 
   return (
-    <AnimatedSection id="home" background="light" className="hero">
+    <AnimatedSection id="home" background="light" className="hero" revealOnScroll={false}>
       <div className={`hero__depth ${isHeroCompressed ? 'hero__depth--compressed' : ''}`} style={heroDepthStyle}>
         <div className="hero__layout">
           <HeroHeader

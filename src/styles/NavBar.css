@@ -47,7 +47,7 @@
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(26, 25, 23, 0.12), rgba(26, 25, 23, 0.04));
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.04));
   color: var(--color-text);
   font-size: 0.85rem;
   font-weight: 700;
@@ -85,7 +85,7 @@
 .navbar__brand-last {
   font-weight: 700;
   letter-spacing: 0.32em;
-  background-image: linear-gradient(125deg, #1c1c1c, #555555, #0f0f0f);
+  background-image: linear-gradient(125deg, #000000, #000000, #000000);
   background-size: 220% 100%;
   color: transparent;
   -webkit-text-fill-color: transparent;
@@ -293,7 +293,7 @@
   padding: 0 0.65rem;
   border-radius: 999px;
   border: 1px solid var(--color-border);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(243, 239, 228, 0.96));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.96));
   color: var(--color-text);
   cursor: pointer;
   box-shadow: var(--shadow-md);
@@ -339,7 +339,7 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: #1a1917;
+  background: #000000;
   transform: translate3d(0, -50%, 0);
   box-shadow: 0 10px 18px -12px rgba(0, 0, 0, 0.6);
   transition: transform 240ms ease, background-color 240ms ease;
@@ -348,7 +348,7 @@
 
 .navbar__theme-toggle--dark .navbar__theme-knob {
   transform: translate3d(36px, -50%, 0);
-  background: #f8f6ef;
+  background: #ffffff;
 }
 
 .navbar__theme-toggle:hover {
@@ -380,9 +380,9 @@
   display: flex;
   justify-content: flex-end;
   align-items: stretch;
-  background: rgba(8, 8, 8, 0.88);
+  background: rgba(0, 0, 0, 0.88);
   backdrop-filter: blur(26px);
-  color: #f8f6ef;
+  color: #ffffff;
   overflow: hidden;
   z-index: 50;
   animation: navbarOverlayFade 220ms ease forwards;
@@ -394,7 +394,7 @@
   background:
     radial-gradient(circle at 15% 50%, rgba(255, 255, 255, 0.18), transparent 45%),
     radial-gradient(circle at 85% 20%, rgba(255, 255, 255, 0.12), transparent 40%),
-    linear-gradient(180deg, rgba(10, 10, 10, 0.95) 0%, rgba(15, 14, 13, 0.92) 100%);
+    linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.92) 100%);
   filter: blur(120px);
   opacity: 0.9;
   pointer-events: none;
@@ -481,7 +481,7 @@
   line-height: 0.95;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: rgba(248, 246, 239, 0.86);
+  color: rgba(255, 255, 255, 0.86);
   text-decoration: none;
   transition: transform 220ms cubic-bezier(0.18, 0.89, 0.32, 1.28), color 180ms ease;
 }
@@ -509,14 +509,14 @@
   align-items: flex-end;
   gap: 0.4rem;
   text-decoration: none;
-  color: rgba(248, 246, 239, 0.86);
+  color: rgba(255, 255, 255, 0.86);
 }
 
 .navbar__overlay-label {
   font-size: 0.72rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(248, 246, 239, 0.54);
+  color: rgba(255, 255, 255, 0.54);
 }
 
 .navbar__overlay-email-address {
@@ -535,7 +535,7 @@
   font-size: 0.78rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(248, 246, 239, 0.65);
+  color: rgba(255, 255, 255, 0.65);
   text-decoration: none;
   transition: color 160ms ease;
 }
@@ -759,16 +759,16 @@
 }
 
 :root[data-theme="dark"] .navbar__logo {
-  background: linear-gradient(135deg, rgba(248, 246, 239, 0.18), rgba(248, 246, 239, 0.04));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.04));
 }
 
 :root[data-theme="dark"] .navbar__brand-last {
-  background-image: linear-gradient(125deg, #f8f6ef, #cfc6ba, #ffffff);
+  background-image: linear-gradient(125deg, #ffffff, #ffffff, #ffffff);
 }
 
 :root[data-theme="dark"] .navbar__theme-toggle {
-  background: linear-gradient(180deg, rgba(18, 16, 14, 0.96), rgba(28, 24, 20, 0.96));
-  border-color: rgba(245, 242, 234, 0.18);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.96));
+  border-color: rgba(255, 255, 255, 0.18);
 }
 
 :root[data-theme="dark"] .navbar__theme-toggle::before {

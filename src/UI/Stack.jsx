@@ -6,7 +6,7 @@ function Stack() {
   const { stack } = profileContent
 
   return (
-    <AnimatedSection id="stack" background="muted">
+    <AnimatedSection id="stack" background="dark" className="stack-showcase">
       <div className="section__header">
         <p className="eyebrow">Stack</p>
         <h2>Stacked for motion-rich, production-ready products</h2>

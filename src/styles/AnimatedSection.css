@@ -2,7 +2,8 @@
   position: relative;
   border-radius: 24px;
   overflow: hidden;
-  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1), opacity 600ms ease;
+  transition: transform 720ms cubic-bezier(0.16, 1, 0.3, 1), opacity 520ms ease, filter 520ms ease;
+  will-change: transform, opacity, filter;
 }
 
 .section__inner {
@@ -14,12 +15,14 @@
 
 .section--hidden {
   opacity: 0;
-  transform: translateY(48px);
+  transform: translate3d(0, 40px, 0) scale(0.985);
+  filter: blur(6px);
 }
 
 .section--visible {
   opacity: 1;
-  transform: none;
+  transform: translate3d(0, 0, 0) scale(1);
+  filter: blur(0);
 }
 
 .section--light {
@@ -28,7 +31,7 @@
 }
 
 .section--dark {
-  background: linear-gradient(135deg, #111111, #000000);
+  background: linear-gradient(135deg, #000000, #000000);
   color: var(--color-text-inverse);
 }
 
@@ -54,7 +57,7 @@
 }
 
 .section--dark .section__description {
-  color: rgba(245, 245, 245, 0.72);
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .eyebrow {
@@ -68,11 +71,23 @@
 }
 
 .section--dark .eyebrow {
-  color: rgba(245, 245, 245, 0.7);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 :root[data-theme="dark"] .section--dark {
   color: var(--color-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    transition: none;
+  }
+
+  .section--hidden {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
 }
 
 @media (max-width: 640px) {

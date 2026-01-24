@@ -19,8 +19,8 @@
   position: absolute;
   inset: -30% -10%;
   background:
-    radial-gradient(circle at 20% 20%, rgba(248, 247, 241, 0.9), transparent 50%),
-    radial-gradient(circle at 80% 10%, rgba(248, 247, 241, 0.6), transparent 45%),
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.9), transparent 50%),
+    radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.6), transparent 45%),
     radial-gradient(circle at 70% 70%, var(--color-accent-soft), transparent 55%);
   pointer-events: none;
   z-index: 0;
@@ -135,7 +135,7 @@
   display: block;
   height: 100%;
   width: calc(var(--story-progress, 0) * 100%);
-  background: linear-gradient(90deg, rgba(26, 25, 23, 0.4), rgba(26, 25, 23, 0.85));
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.85));
   border-radius: 999px;
   transition: width 120ms linear;
 }
@@ -160,7 +160,7 @@
   border-radius: 40px;
   padding: 12px;
   background: var(--color-surface-dark);
-  box-shadow: 0 50px 90px -50px rgba(17, 17, 17, 0.6);
+  box-shadow: 0 50px 90px -50px rgba(0, 0, 0, 0.6);
   transform: translate3d(0, calc((0.5 - var(--story-progress, 0)) * 80px), 0)
     scale(calc(1 - var(--story-progress, 0) * 0.06));
   transition: transform 120ms linear;
@@ -172,7 +172,7 @@
   position: absolute;
   inset: 6px;
   border-radius: 34px;
-  border: 1px solid rgba(248, 247, 241, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   pointer-events: none;
 }
 
@@ -181,14 +181,14 @@
   width: 100%;
   height: 100%;
   border-radius: 32px;
-  background: radial-gradient(circle at 30% 20%, rgba(248, 247, 241, 0.12), var(--color-surface-dark) 60%);
+  background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.12), var(--color-surface-dark) 60%);
   overflow: hidden;
 }
 
 .scroll-story__device-gradient {
   position: absolute;
   inset: -20% -10%;
-  background: radial-gradient(circle at 30% 20%, rgba(248, 247, 241, 0.4), transparent 55%);
+  background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.4), transparent 55%);
   opacity: calc(0.2 + var(--story-step-progress, 0) * 0.6);
   transform: translateY(calc((1 - var(--story-step-progress, 0)) * 14px));
   transition: opacity 180ms linear, transform 180ms linear;
@@ -198,8 +198,8 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(90deg, rgba(248, 247, 241, 0.08) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(248, 247, 241, 0.08) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
   background-size: 36px 36px;
   opacity: 0.4;
 }
@@ -207,7 +207,7 @@
 .scroll-story__device-shine {
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, rgba(248, 247, 241, 0), rgba(248, 247, 241, 0.25), rgba(248, 247, 241, 0));
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0));
   transform: translateX(calc(var(--story-progress, 0) * 120%));
   opacity: 0.5;
 }
@@ -233,7 +233,7 @@
 }
 
 :root[data-theme="dark"] .scroll-story__progress-bar {
-  background: linear-gradient(90deg, rgba(245, 242, 234, 0.35), rgba(245, 242, 234, 0.9));
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.9));
 }
 
 @media (max-width: 960px) {

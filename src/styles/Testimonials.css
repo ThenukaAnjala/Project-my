@@ -4,6 +4,41 @@
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
+.section--hidden .testimonial {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0) scale(0.98);
+}
+
+.section--visible .testimonial {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  transition-delay: calc(var(--testimonial-delay, 0) * 120ms + 140ms);
+}
+
+.testimonial:nth-child(1) {
+  --testimonial-delay: 0;
+}
+
+.testimonial:nth-child(2) {
+  --testimonial-delay: 1;
+}
+
+.testimonial:nth-child(3) {
+  --testimonial-delay: 2;
+}
+
+.testimonial:nth-child(4) {
+  --testimonial-delay: 3;
+}
+
+.testimonial:nth-child(5) {
+  --testimonial-delay: 4;
+}
+
+.testimonial:nth-child(6) {
+  --testimonial-delay: 5;
+}
+
 .testimonial {
   margin: 0;
   padding: 1.75rem;
@@ -14,6 +49,8 @@
   flex-direction: column;
   gap: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: transform 560ms cubic-bezier(0.16, 1, 0.3, 1), opacity 420ms ease;
+  transition-delay: 0ms;
 }
 
 .testimonial__quote {
@@ -28,6 +65,18 @@
   flex-direction: column;
   gap: 0.2rem;
   opacity: 0.7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial {
+    transition: none;
+  }
+
+  .section--hidden .testimonial,
+  .section--visible .testimonial {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 :root[data-theme="dark"] .testimonial {

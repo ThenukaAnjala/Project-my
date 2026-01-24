@@ -85,7 +85,7 @@
 }
 
 .hero__title-line--animated::before {
-  background-image: linear-gradient(120deg, #050505, #f5f5f5, #1d1d1d, #e3e3e3, #050505);
+  background-image: linear-gradient(120deg, #000000, #ffffff, #000000, #ffffff, #000000);
   background-size: 240% 240%;
   animation: hero-title-gradient 9s ease-in-out infinite;
   opacity: 0.95;
@@ -314,7 +314,7 @@
 .hero__image-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(162deg, rgba(26, 25, 23, 0.85), rgba(26, 25, 23, 0.4));
+  background: linear-gradient(162deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.4));
   mix-blend-mode: multiply;
   opacity: 0.72;
   pointer-events: none;
@@ -329,7 +329,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
-  color: #f8f7f1;
+  color: #ffffff;
   pointer-events: none;
   transform: translateY(18%);
   opacity: 0;
@@ -487,7 +487,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27160%27%20height%3D%27320%27%20viewBox%3D%270%200%20160%20320%27%3E%0A%20%20%3Crect%20width%3D%27160%27%20height%3D%27320%27%20fill%3D%27none%27%2F%3E%0A%20%20%3Cg%20fill%3D%27%231a1917%27%20font-family%3D%27monospace%27%20font-size%3D%2712%27%20opacity%3D%270.65%27%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%2716%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%2716%27%3EF%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%2716%27%3EK%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%2716%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%2716%27%3EU%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%2716%27%3EZ%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%2716%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%2716%27%3EJ%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%2736%27%3EH%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%2736%27%3EM%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%2736%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%2736%27%3EW%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%2736%27%3EB%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%2736%27%3E1%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%2736%27%3EL%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%2736%27%3EQ%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%2756%27%3EO%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%2756%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%2756%27%3EY%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%2756%27%3ED%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%2756%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%2756%27%3EN%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%2756%27%3ES%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%2756%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%2776%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%2776%27%3EA%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%2776%27%3EF%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%2776%27%3E1%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%2776%27%3EP%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%2776%27%3EU%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%2776%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%2776%27%3EE%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%2796%27%3EC%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%2796%27%3EH%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%2796%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%2796%27%3ER%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%2796%27%3EW%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%2796%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%2796%27%3EG%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%2796%27%3EL%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%27116%27%3EJ%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%27116%27%3E1%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%27116%27%3ET%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%27116%27%3EY%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%27116%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%27116%27%3EI%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%27116%27%3EN%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%27116%27%3E1%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%27136%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%27136%27%3EV%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%27136%27%3EA%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%27136%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%27136%27%3EK%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%27136%27%3EP%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%27136%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%27136%27%3EZ%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%27156%27%3EX%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%27156%27%3EC%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%27156%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%27156%27%3EM%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%27156%27%3ER%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%27156%27%3E1%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%27156%27%3EB%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%27156%27%3EG%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%27176%27%3EE%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%27176%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%27176%27%3EO%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%27176%27%3ET%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%27176%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%27176%27%3ED%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%27176%27%3EI%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%27176%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%27196%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%27196%27%3EQ%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%27196%27%3EV%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%27196%27%3E1%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%27196%27%3EF%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%27196%27%3EK%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%27196%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%27196%27%3EU%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%27216%27%3ES%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%27216%27%3EX%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%27216%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%27216%27%3EH%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%27216%27%3EM%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%27216%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%27216%27%3EW%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%27216%27%3EB%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%27236%27%3EZ%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%27236%27%3E1%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%27236%27%3EJ%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%27236%27%3EO%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%27236%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%27236%27%3EY%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%27236%27%3ED%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%27236%27%3E1%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%27256%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%27256%27%3EL%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%27256%27%3EQ%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%27256%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%27256%27%3EA%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%27256%27%3EF%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%27256%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%27256%27%3EP%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%27276%27%3EN%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%27276%27%3ES%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%27276%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%27276%27%3EC%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%27276%27%3EH%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%27276%27%3E1%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%27276%27%3ER%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%27276%27%3EW%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%27296%27%3EU%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%27296%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%27296%27%3EE%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%27296%27%3EJ%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%27296%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%27296%27%3ET%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%27296%27%3EY%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%27296%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%27316%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%27316%27%3EG%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%27316%27%3EL%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%27316%27%3E1%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%27316%27%3EV%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%27316%27%3EA%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%27316%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%27316%27%3EK%3C%2Ftext%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27160%27%20height%3D%27320%27%20viewBox%3D%270%200%20160%20320%27%3E%0A%20%20%3Crect%20width%3D%27160%27%20height%3D%27320%27%20fill%3D%27none%27%2F%3E%0A%20%20%3Cg%20fill%3D%27%23000000%27%20font-family%3D%27monospace%27%20font-size%3D%2712%27%20opacity%3D%270.65%27%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%2716%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%2716%27%3EF%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%2716%27%3EK%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%2716%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%2716%27%3EU%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%2716%27%3EZ%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%2716%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%2716%27%3EJ%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%2736%27%3EH%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%2736%27%3EM%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%2736%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%2736%27%3EW%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%2736%27%3EB%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%2736%27%3E1%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%2736%27%3EL%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%2736%27%3EQ%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%2756%27%3EO%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%2756%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%2756%27%3EY%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%2756%27%3ED%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%2756%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%2756%27%3EN%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%2756%27%3ES%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%2756%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%2776%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%2776%27%3EA%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%2776%27%3EF%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%2776%27%3E1%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%2776%27%3EP%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%2776%27%3EU%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%2776%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%2776%27%3EE%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%2796%27%3EC%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%2796%27%3EH%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%2796%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%2796%27%3ER%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%2796%27%3EW%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%2796%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%2796%27%3EG%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%2796%27%3EL%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%27116%27%3EJ%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%27116%27%3E1%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%27116%27%3ET%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%27116%27%3EY%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%27116%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%27116%27%3EI%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%27116%27%3EN%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%27116%27%3E1%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%27136%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%27136%27%3EV%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%27136%27%3EA%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%27136%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%27136%27%3EK%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%27136%27%3EP%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%27136%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%27136%27%3EZ%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%27156%27%3EX%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%27156%27%3EC%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%27156%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%27156%27%3EM%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%27156%27%3ER%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%27156%27%3E1%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%27156%27%3EB%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%27156%27%3EG%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%27176%27%3EE%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%27176%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%27176%27%3EO%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%27176%27%3ET%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%27176%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%27176%27%3ED%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%27176%27%3EI%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%27176%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%27196%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%27196%27%3EQ%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%27196%27%3EV%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%27196%27%3E1%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%27196%27%3EF%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%27196%27%3EK%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%27196%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%27196%27%3EU%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%27216%27%3ES%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%27216%27%3EX%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%27216%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%27216%27%3EH%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%27216%27%3EM%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%27216%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%27216%27%3EW%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%27216%27%3EB%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%27236%27%3EZ%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%27236%27%3E1%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%27236%27%3EJ%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%27236%27%3EO%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%27236%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%27236%27%3EY%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%27236%27%3ED%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%27236%27%3E1%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%27256%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%27256%27%3EL%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%27256%27%3EQ%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%27256%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%27256%27%3EA%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%27256%27%3EF%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%27256%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%27256%27%3EP%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%27276%27%3EN%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%27276%27%3ES%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%27276%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%27276%27%3EC%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%27276%27%3EH%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%27276%27%3E1%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%27276%27%3ER%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%27276%27%3EW%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%27296%27%3EU%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%27296%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%27296%27%3EE%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%27296%27%3EJ%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%27296%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%27296%27%3ET%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%27296%27%3EY%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%27296%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%276%27%20y%3D%27316%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2726%27%20y%3D%27316%27%3EG%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2746%27%20y%3D%27316%27%3EL%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2766%27%20y%3D%27316%27%3E1%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%2786%27%20y%3D%27316%27%3EV%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27106%27%20y%3D%27316%27%3EA%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27126%27%20y%3D%27316%27%3E0%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%27146%27%20y%3D%27316%27%3EK%3C%2Ftext%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
   background-size: 160px 320px;
   background-position: 0 0;
   background-repeat: repeat;
@@ -550,12 +550,12 @@
 }
 
 :root[data-theme="dark"] .hero__stats li {
-  background: linear-gradient(135deg, rgba(245, 242, 234, 0.08), transparent 70%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 70%);
   box-shadow: 0 18px 40px -32px rgba(0, 0, 0, 0.7);
 }
 
 :root[data-theme="dark"] .hero__stats li::before {
-  background: linear-gradient(90deg, rgba(245, 242, 234, 0.7), transparent);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.7), transparent);
   opacity: 0.6;
 }
 
@@ -566,20 +566,20 @@
 }
 
 :root[data-theme="dark"] .hero__stats li:focus-within {
-  border-color: rgba(245, 242, 234, 0.6);
-  box-shadow: 0 0 0 2px rgba(245, 242, 234, 0.12), 0 24px 48px -32px rgba(0, 0, 0, 0.8);
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.12), 0 24px 48px -32px rgba(0, 0, 0, 0.8);
 }
 
 @media (hover: hover) {
   .hero__stats li:hover {
     transform: translateY(-6px) scale(1.01);
-    border-color: rgba(26, 25, 23, 0.28);
+    border-color: rgba(0, 0, 0, 0.28);
     box-shadow: 0 26px 54px -30px rgba(0, 0, 0, 0.45);
   }
 }
 
 :root[data-theme="dark"] .hero__stats li:hover {
-  border-color: rgba(245, 242, 234, 0.28);
+  border-color: rgba(255, 255, 255, 0.28);
   box-shadow: 0 26px 54px -30px rgba(0, 0, 0, 0.75);
 }
 
@@ -636,8 +636,8 @@
     background: conic-gradient(
       from 0deg,
       transparent 0deg,
-      rgba(26, 25, 23, 0.85) 12deg,
-      rgba(26, 25, 23, 0.25) 24deg,
+      rgba(0, 0, 0, 0.85) 12deg,
+      rgba(0, 0, 0, 0.25) 24deg,
       transparent 48deg,
       transparent 360deg
     );
@@ -654,8 +654,8 @@
     background: conic-gradient(
       from 0deg,
       transparent 0deg,
-      rgba(245, 242, 234, 0.75) 12deg,
-      rgba(245, 242, 234, 0.2) 24deg,
+      rgba(255, 255, 255, 0.75) 12deg,
+      rgba(255, 255, 255, 0.2) 24deg,
       transparent 48deg,
       transparent 360deg
     );
@@ -673,8 +673,8 @@
     background: conic-gradient(
       from 0deg,
       transparent 0deg,
-      rgba(26, 25, 23, 0.85) 12deg,
-      rgba(26, 25, 23, 0.25) 24deg,
+      rgba(0, 0, 0, 0.85) 12deg,
+      rgba(0, 0, 0, 0.25) 24deg,
       transparent 48deg,
       transparent 360deg
     );
@@ -691,8 +691,8 @@
     background: conic-gradient(
       from 0deg,
       transparent 0deg,
-      rgba(245, 242, 234, 0.75) 12deg,
-      rgba(245, 242, 234, 0.2) 24deg,
+      rgba(255, 255, 255, 0.75) 12deg,
+      rgba(255, 255, 255, 0.2) 24deg,
       transparent 48deg,
       transparent 360deg
     );
@@ -724,7 +724,7 @@
   background:
     radial-gradient(circle at 18% 22%, rgba(0, 0, 0, 0.55), transparent 55%),
     radial-gradient(circle at 82% 78%, rgba(0, 0, 0, 0.45), transparent 50%),
-    rgba(8, 8, 8, 0.7);
+    rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(20px);
 }
 
@@ -735,7 +735,7 @@
   height: 100%;
   padding: clamp(2.5rem, 6vw, 4rem);
   border-radius: 0;
-  background: linear-gradient(135deg, rgba(253, 251, 246, 0.98), rgba(246, 241, 232, 0.92));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92));
   color: var(--color-text);
   border: none;
   box-shadow: none;
@@ -760,7 +760,7 @@
   width: min(640px, 92vw);
   padding: clamp(2rem, 4.5vw, 3rem);
   border-radius: 28px;
-  background: rgba(253, 251, 246, 0.92);
+  background: rgba(255, 255, 255, 0.92);
   border: 1px solid var(--color-border);
   box-shadow: 0 40px 80px -50px rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(12px);
@@ -860,17 +860,17 @@
 }
 
 :root[data-theme="dark"] .stat-modal__panel {
-  background: linear-gradient(135deg, rgba(14, 12, 10, 0.98), rgba(20, 18, 16, 0.9));
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.98), rgba(0, 0, 0, 0.9));
 }
 
 :root[data-theme="dark"] .stat-modal__close {
-  border-color: rgba(245, 242, 234, 0.2);
-  background: rgba(245, 242, 234, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 :root[data-theme="dark"] .stat-modal__content {
-  background: rgba(18, 16, 14, 0.9);
-  border-color: rgba(245, 242, 234, 0.14);
+  background: rgba(0, 0, 0, 0.9);
+  border-color: rgba(255, 255, 255, 0.14);
   box-shadow: 0 40px 80px -50px rgba(0, 0, 0, 0.85);
 }
 
@@ -879,8 +879,8 @@
 }
 
 :root[data-theme="dark"] .stat-modal__label {
-  background: rgba(245, 242, 234, 0.08);
-  border-color: rgba(245, 242, 234, 0.14);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.14);
 }
 
 @keyframes statModalFade {

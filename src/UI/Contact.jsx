@@ -40,7 +40,7 @@ function Contact() {
           </div>
           <ul className="contact-section__socials">
             {contact.socials.map((social, index) => (
-              <li key={social.label} style={{ animationDelay: `${index * 120}ms` }}>
+              <li key={social.label} style={{ transitionDelay: `${index * 120}ms` }}>
                 <a href={social.href} target="_blank" rel="noreferrer" className="contact-section__social-chip">
                   {social.label}
                 </a>
